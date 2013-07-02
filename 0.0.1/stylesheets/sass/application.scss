@@ -1,0 +1,429 @@
+//************************************************************************//
+// Imports
+//************************************************************************//
+
+@import "vendor/normalize";
+@import "bourbon/bourbon";
+
+// Neat settings
+@import "neat/neat-helpers";
+
+$max-width: 1200px;
+
+@import "neat/neat";
+
+
+//************************************************************************//
+// Variables
+//************************************************************************//
+
+$base-darker: #333;
+$base-dark: #666;
+$base-mid: #999;
+$base-lite: #CCC;
+$base-liter: #F0F0F0;
+
+$base-color: $base-darker;
+$base-background-color: white;
+$base-border-color: $base-mid;
+$base-font-family: $helvetica;
+$base-shadow: 0 1px 0 white;
+
+$status-positive: green;
+$status-negative: red;
+
+$header-height: 50px;
+$fillometer-large-height: 30px;
+$tools-height: 60px;
+
+//************************************************************************//
+// Mixins
+//************************************************************************//
+
+@mixin vertical-center-text($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin hover-text-decoration {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin carrot($border, $background: white, $size: 10px, $position: 50%, $direction: up) {
+  position: relative;
+
+    &::before {
+      @if $direction == up {
+        border: 1px solid $border;
+        border-bottom: 0;
+        border-right: 0;
+        top: -($size / 2) - 1px;
+      }
+
+      @include transform(rotate(45deg));
+      background-color: $background;
+      content: "";
+      height: $size;
+      left: $position;
+      margin-left: -($size / 2);
+      position: absolute;
+      width: $size;
+    }
+}
+
+//************************************************************************//
+// Elements
+//************************************************************************//
+
+body, html {
+  font-family: $base-font-family;
+  font-size: 14px;
+  line-height: 20px;
+  color: $base-color;
+}
+
+body {
+  @include pad(0 default);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+
+  span {
+    font-weight: 200;
+  }
+}
+
+a {
+  @include hover-text-decoration;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.width-wrapper {
+  @include outer-container;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.tool {
+  @include size(30px);
+  background-color: $base-mid;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+//************************************************************************//
+// Components
+//************************************************************************//
+
+.nav {
+  a {
+    display: inline-block;
+    margin-right: $gutter;
+  }
+
+  a.current {
+    font-weight: bold;
+  }
+}
+
+.avatar {
+  @include size(40px);
+  border: 1px solid $base-border-color;
+
+  img {
+    display: block;
+  }
+}
+
+.fillometer {
+  background-color: $base-liter;
+  border-radius: 3px;
+  border: 1px solid $base-border-color;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+
+  .fillometer-fill {
+    @include position(relative, 0px 0 0px 0px);
+    background-color: $base-mid;
+    float: left;
+    overflow: hidden;
+    height: 100%;
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  &.large {
+    $height: 30px;
+    height: $fillometer-large-height;
+
+    label {
+      @include vertical-center-text($fillometer-large-height);
+      float: left;
+      padding-left: 10px;
+    }
+  }
+
+  &.status-positive .fillometer-fill {
+    background-color: $status-positive;
+  }
+
+  &.status-negative .fillometer-fill {
+    background-color: $status-negative;
+  }
+}
+
+.thumbnail {
+  overflow: hidden;
+  border: 1px solid $base-border-color;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.slider {
+  position: relative;
+
+  .slider-handle {
+    $size: 20px;
+    @include position(absolute, 50% 25% 0 0);
+    @include size($size);
+    border-radius: $size / 2;
+    background-color: $base-mid;
+    border: 3px solid $base-background-color;
+    margin-top: -($size / 2);
+    z-index: 1;
+  }
+
+  .slider-track {
+    $height: 4px;
+    @include position(relative, 50% 0 0 0);
+    margin-top: -($height / 2);
+    height: $height;
+    background-color: $base-lite;
+  }
+}
+
+.toolbar {
+  float: right;
+}
+
+//************************************************************************//
+// Modules
+//************************************************************************//
+
+.header {
+  @include transition(all 1s);
+  position: relative;
+  height: $header-height;
+
+  .logo {
+    @include span-columns(2);
+    @include vertical-center-text($header-height);
+  }
+
+  .nav {
+    @include span-columns(8);
+
+    a {
+      @include vertical-center-text($header-height);
+    }
+  }
+
+  .user.dropdown {
+    float: right;
+  }
+}
+
+.test-header {
+  padding: $gutter 0;
+
+  h2 {
+    @include span-columns(2);
+    line-height: $fillometer-large-height;
+  }
+
+  .fillometer {
+    @include span-columns(9);
+  }
+
+  button {
+    @include span-columns(1);
+    @include omega;
+    height: $fillometer-large-height;
+  }
+}
+
+.main {
+  @extend .width-wrapper;
+  @include carrot($base-border-color, white, 10px, 26%);
+  border: 1px solid $base-border-color;
+  border-radius: 3px;
+  box-shadow: 0 1px 8px $base-liter;
+}
+
+.main-header {
+  @include pad(10px default);
+  @include row();
+  border-bottom: 1px solid $base-border-color;
+}
+
+.row {
+  @include pad(default);
+  @include row();
+  border-top: 1px solid $base-lite;
+
+  &:first-child {
+    border: 0;
+  }
+
+  &:hover {
+    background-color: lighten($base-liter, 3%);
+  }
+}
+
+.files-list {
+  li {
+    margin-bottom: 5px;
+  }
+}
+
+.file-status {
+  $size: 12px;
+  background-color: $base-lite;
+  border-radius: 2px;
+  display: inline-block;
+  height: $size;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  width: $size;
+}
+
+.step-controller {
+  @include position(absolute, 5px 0px 0 0);
+}
+
+.tools {
+  @include position(fixed, 0 $gutter 0px $gutter);
+  height: $tools-height;
+
+  .toolbar {
+    margin: 15px 0;
+  }
+}
+
+.view-slider {
+  @include span-columns(6);
+  height: $tools-height;
+}
+
+//************************************************************************//
+// Templates
+//************************************************************************//
+
+.scenario {
+
+}
+
+.scenario-summary {
+  @include span-columns(2);
+
+  .thumbnail {
+    margin-top: 5px;
+  }
+}
+
+.scenario-details {
+  @include span-columns(9);
+  font-family: $monospace;
+}
+
+.scenario-title {
+  font-size: em(20);
+  margin: 3px 0 10px;
+}
+
+.scenario-actions {
+  @include span-columns(1);
+}
+
+.previewer {
+  @include transition(1s);
+  @include position(absolute, 80px+$header-height $gutter $tools-height $gutter);
+  max-width: 100%;
+
+  &::before {
+    left: 33%;
+  }
+
+  .main-header {
+    @include pad(10px);
+  }
+
+  h3 {
+    font-family: $monospace;
+  }
+}
+
+//************************************************************************//
+// Pages
+//************************************************************************//
+
+.page-home {
+
+}
+
+.page-test {
+
+}
+
+//************************************************************************//
+// States
+//************************************************************************//
+
+.is-hidden {
+  display: none;
+}
+
+.is-invisible {
+  opacity: 0;
+}
+
+.header-retracted {
+  .header {
+    margin-top: -($header-height);
+  }
+
+  .previewer {
+    top: 80px;
+  }
+}
