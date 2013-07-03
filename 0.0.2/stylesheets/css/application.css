@@ -197,6 +197,13 @@ table {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+@font-face {
+  font-family: batch-icons;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/batch/batch-icons-webfont.eot");
+  src: url("../../fonts/batch/batch-icons-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/batch/batch-icons-webfont.woff") format("woff"), url("../../fonts/batch/batch-icons-webfont.ttf") format("truetype"), url("../../fonts/batch/batch-icons-webfont.svg#batch-icons") format("svg"); }
+
 body, html {
   color: #333333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -244,13 +251,16 @@ li {
 .left {
   float: left; }
 
+.icon, .block-arrow {
+  font-family: batch-icons;
+  font-size: 24px;
+  font-weight: normal !important; }
+
 button,
-.button,
-.tool {
-  background-color: blue;
+.button, .button.action,
+.button.is-active {
   border-radius: 3px;
   border: 0;
-  color: white;
   display: inline-block;
   font-weight: bold;
   height: 40px;
@@ -261,32 +271,40 @@ button,
   padding: 0 10px;
   position: relative;
   text-align: center; }
-  button:hover,
-  .button:hover,
-  .tool:hover {
-    background-color: #0000e6; }
-  button:active,
-  .button:active,
-  .tool:active {
-    background-color: #000099; }
-  button + button,
-  button + .button,
-  button + .tool,
-  .button + button,
-  .tool + button,
-  .button + .button,
-  .tool + .button,
-  .button + .tool,
-  .tool + .tool {
-    margin-left: 3px; }
 
-.tool {
-  background-color: #999999;
-  border-radius: 3px;
-  cursor: pointer;
-  display: inline-block;
-  margin-left: 3px;
-  width: 40px; }
+button,
+.button {
+  background-color: #e3e3e3;
+  color: #999999; }
+  button:hover, button.is-active,
+  .button:hover,
+  .button.is-active {
+    background-color: #d6d6d6;
+    color: #666666; }
+  button:active,
+  .button:active {
+    background-color: #bdbdbd; }
+
+.button.action,
+.button.is-active {
+  background-color: blue;
+  color: white; }
+  .button.action:hover,
+  .button.is-active:hover {
+    background-color: #0000e6; }
+  .button.action:active,
+  .button.is-active:active {
+    background-color: #000099; }
+
+.button-group .button, .toolbar .button {
+  border-radius: 0;
+  float: left;
+  margin-right: 2px; }
+  .button-group .button:first-child, .toolbar .button:first-child {
+    border-radius: 3px 0 0 3px; }
+  .button-group .button:last-child, .toolbar .button:last-child {
+    border-radius: 0 3px 3px 0;
+    margin-right: 0; }
 
 .preview {
   position: absolute;
@@ -294,10 +312,10 @@ button,
   right: 0px;
   bottom: 0px;
   left: 0px;
-  width: 100%;
+  border: 0;
   height: 100%;
-  z-index: 2;
-  border: 0; }
+  width: 100%;
+  z-index: 2; }
 
 .nav-item {
   display: inline-block;
@@ -308,28 +326,33 @@ button,
 .block-arrow {
   width: 24px;
   height: 26px;
-  background-color: #666666;
-  border-radius: 3px 0 0 3px;
+  background-color: blue;
+  border-radius: 3px;
+  color: white;
   display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
   margin-right: 20px;
   position: relative;
   text-align: center;
-  top: 6px; }
+  top: 0; }
   .block-arrow::after {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    background-color: #666666;
-    border-radius: 0 3px 0 0;
+    position: absolute;
+    top: 4px;
+    right: -8px;
+    background-color: blue;
+    border-radius: 3px;
     content: "";
     display: block;
-    position: absolute;
-    right: -10px;
-    top: 4px; }
+    z-index: -1; }
 
 .avatar {
   width: 40px;
@@ -358,7 +381,8 @@ button,
       color: white;
       font-weight: bold; }
   .fillometer.large {
-    height: 40px; }
+    height: 40px;
+    border: 0; }
     .fillometer.large label {
       height: 40px;
       line-height: 40px;
@@ -367,7 +391,7 @@ button,
   .fillometer.status-positive .fillometer-fill {
     background-color: green; }
   .fillometer.status-negative .fillometer-fill {
-    background-color: red; }
+    background-color: #d34248; }
 
 .thumbnail {
   height: 213.84425px;
@@ -376,6 +400,10 @@ button,
     display: block;
     height: auto;
     width: 100%; }
+
+.stepper {
+  float: left;
+  margin-top: 9px; }
 
 .slider {
   position: relative; }
@@ -460,18 +488,18 @@ button,
     display: table; }
   .test-header:after {
     clear: both; }
-  .test-header h2 {
+  .test-header .test-title {
     display: block;
     float: left;
     margin-right: 2.35765%;
-    width: 14.70196%;
-    line-height: 40px; }
-    .test-header h2:last-child {
+    width: 14.70196%; }
+    .test-header .test-title:last-child {
       margin-right: 0; }
-  .test-header .button, .test-header .tool {
-    background-color: #f0f0f0;
-    color: #cccccc;
-    margin-right: 10px; }
+    .test-header .test-title .button {
+      margin-right: 10px; }
+    .test-header .test-title h2 {
+      line-height: 40px;
+      display: inline-block; }
   .test-header .fillometer {
     display: block;
     float: left;
@@ -488,9 +516,8 @@ button,
     line-height: 40px; }
     .test-header .test-actions:last-child {
       margin-right: 0; }
-    .test-header .test-actions button {
-      float: right;
-      margin-right: 10px; }
+    .test-header .test-actions .button-group, .test-header .test-actions .toolbar {
+      float: right; }
 
 .main {
   position: relative;
@@ -558,12 +585,12 @@ button,
       color: white;
       content: "view";
       display: block;
+      font-weight: bold;
       height: 30px;
       line-height: 30px;
       margin-top: -15px;
       text-align: center;
-      text-transform: uppercase;
-      font-weight: bold; }
+      text-transform: uppercase; }
   .row .thumbnail {
     position: relative; }
 
@@ -606,17 +633,21 @@ a.row {
   top: 2px;
   width: 12px; }
 
-.stepper {
-  float: left; }
-
-.view-slider {
+.view-controls {
   display: block;
   float: left;
   margin-right: 2.35765%;
-  width: 48.82117%;
-  height: 60px; }
-  .view-slider:last-child {
+  width: 57.35098%; }
+  .view-controls:last-child {
     margin-right: 0; }
+  .view-controls .button {
+    float: left;
+    margin: 9px 5px 0 0; }
+  .view-controls .slider {
+    float: left;
+    height: 60px;
+    margin: 0 5px;
+    width: 60%; }
 
 .scenario-row {
   border: 1px solid #999999;
