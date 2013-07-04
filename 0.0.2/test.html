@@ -39,20 +39,36 @@
         <a href="index.html" class="button icon">&#xF0AA;</a>
         <h2>June 26 <span>3:32pm</span></h2>
       </div>
-      <div class="fillometer large status-negative" data-fillometer-width="25%">
-        <div class="fillometer-fill">
-          <label class="filometer-label">5 failing scenarios</label>
+      <div id="status" class="test-chooser is-active">
+        <div class="test-status fillometer large status-negative" data-fillometer-width="25%">
+          <div class="fillometer-fill">
+            <label class="filometer-label">5 failing scenarios</label>
+          </div>
+          <label class="fillometer-label">15 passing scenarios</label>
         </div>
-        <label class="fillometer-label">15 passing scenarios</label>
+        <div class="test-actions">
+          <a href="#" class="button left">20 total scenarios</a>
+          <a class="button icon right" data-toggle="test-chooser">&#xF177;</a>
+        </div>
       </div>
-      <div class="test-actions">
-        <a href="#">20 total scenarios</a>
-        <div class="button-group">
-          <a href="#" class="button icon">&#xF0A9;</a>
-          <a href="#" class="button icon">&#xF0A8;</a>
+      <div id="commit_history" class="test-chooser">
+        <div class="commit-timeline">
+          <div class="commit"><a data-tooltip="Initial commit"></a></div>
+          <div class="commit"><a></a></div>
+          <div class="commit"><a></a></div>
+          <div class="commit"><a></a></div>
+          <div class="commit"><a></a></div>
+          <div class="commit"><a></a></div>
+          <div class="commit"><a class="is-selected"></a></div>
+        </div>
+        <div class="commit-message">
+          <a href="#" class="sha">956bf49</a>
+          <strong>Rough in something awesome</strong>
+          <a class="button icon right" data-toggle="test-chooser">&#xF084;</a>
         </div>
       </div>
     </header>
+
     <div class="main previewer">
       <header class="main-header previewer-header">
         <div class="scenario-title">
@@ -78,11 +94,11 @@
             <a href="#" class="button icon">&#xF175;</a>
           </div>
           <div class="toolbar">
-            <a href="#" class="button icon">&#xF020;</a>
-            <a href="#" class="button icon">&#xF128;</a>
-            <a href="#" class="button icon">&#xF004;</a>
-            <a href="#" class="button icon">&#xF061;</a>
-            <a href="#" class="button icon">&#xF147;</a>
+            <a href="#" class="button icon" data-tooltip="Differences">&#xF020;</a>
+            <a href="#" class="button icon" data-tooltip="Rulers">&#xF128;</a>
+            <a href="#" class="button icon" data-tooltip="Conversation">&#xF004;</a>
+            <a href="#" class="button icon" data-tooltip="Code">&#xF061;</a>
+            <a href="#" class="button icon" data-tooltip="Open">&#xF147;</a>
           </div>
         </div>
       </header>

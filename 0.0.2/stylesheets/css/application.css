@@ -261,6 +261,7 @@ button,
 .button.is-active {
   border-radius: 3px;
   border: 0;
+  cursor: pointer;
   display: inline-block;
   font-weight: bold;
   height: 40px;
@@ -414,9 +415,10 @@ button,
     right: 25%;
     width: 20px;
     height: 20px;
-    background-color: #999999;
+    background-color: #cccccc;
     border-radius: 10px;
     border: 3px solid white;
+    cursor: pointer;
     margin-top: -10px;
     z-index: 1; }
     .slider .slider-handle::before {
@@ -424,6 +426,8 @@ button,
       border-bottom: 0;
       border-right: 0;
       top: -6px;
+      margin-left: -5px;
+      left: 50%;
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
@@ -432,12 +436,12 @@ button,
       background-color: #999999;
       content: "";
       height: 10px;
-      left: 50%;
-      margin-left: -5px;
       position: absolute;
       width: 10px; }
     .slider .slider-handle::before {
       top: 31px; }
+    .slider .slider-handle:hover {
+      background-color: #666666; }
   .slider .slider-track {
     position: relative;
     top: 50%;
@@ -482,7 +486,8 @@ button,
 .test-header {
   padding: 2.35765%;
   *zoom: 1;
-  display: block; }
+  display: block;
+  position: relative; }
   .test-header:before, .test-header:after {
     content: " ";
     display: table; }
@@ -500,24 +505,139 @@ button,
     .test-header .test-title h2 {
       line-height: 40px;
       display: inline-block; }
-  .test-header .fillometer {
+  .test-header .test-chooser {
     display: block;
     float: left;
     margin-right: 2.35765%;
-    width: 65.88078%; }
-    .test-header .fillometer:last-child {
-      margin-right: 0; }
-  .test-header .test-actions {
-    display: block;
-    float: left;
-    margin-right: 2.35765%;
-    width: 14.70196%;
+    width: 82.94039%;
     margin-right: 0;
-    line-height: 40px; }
-    .test-header .test-actions:last-child {
+    *zoom: 1;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: none; }
+    .test-header .test-chooser:last-child {
       margin-right: 0; }
-    .test-header .test-actions .button-group, .test-header .test-actions .toolbar {
-      float: right; }
+    .test-header .test-chooser:before, .test-header .test-chooser:after {
+      content: " ";
+      display: table; }
+    .test-header .test-chooser:after {
+      clear: both; }
+
+.test-status {
+  display: block;
+  float: left;
+  margin-right: 2.84259%;
+  width: 79.43148%; }
+  .test-status:last-child {
+    margin-right: 0; }
+
+.test-actions {
+  display: block;
+  float: left;
+  margin-right: 2.84259%;
+  width: 17.72593%;
+  margin-right: 0;
+  line-height: 40px; }
+  .test-actions:last-child {
+    margin-right: 0; }
+  .test-actions .button-group, .test-actions .toolbar {
+    float: right; }
+
+.commit-timeline {
+  display: block;
+  float: left;
+  margin-right: 2.84259%;
+  width: 69.14722%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  height: 40px;
+  position: relative; }
+  .commit-timeline:last-child {
+    margin-right: 0; }
+  .commit-timeline::before {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: 4px;
+    background-color: #cccccc;
+    content: "";
+    margin-top: -2px; }
+  .commit-timeline::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 60px;
+    height: 40px;
+    background-image: -webkit-linear-gradient(left, white, rgba(255, 255, 255, 0));
+    background-image: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+    display: block;
+    z-index: 2; }
+  .commit-timeline .commit {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    position: relative;
+    height: 40px; }
+    .commit-timeline .commit a {
+      position: absolute;
+      top: 50%;
+      right: 0px;
+      width: 14px;
+      height: 14px;
+      border-radius: 7px;
+      margin: -7px 0 0 0;
+      cursor: pointer;
+      background-color: white;
+      box-shadow: inset 0 0 0 3px #cccccc;
+      display: block;
+      z-index: 1; }
+      .commit-timeline .commit a:hover, .commit-timeline .commit a.is-selected {
+        background-color: #cccccc; }
+
+.commit-message {
+  display: block;
+  float: left;
+  margin-right: 2.84259%;
+  width: 28.01019%;
+  margin-right: 0;
+  position: relative;
+  line-height: 40px;
+  padding-left: 10px;
+  border-left: 1px solid #cccccc; }
+  .commit-message:last-child {
+    margin-right: 0; }
+  .commit-message::before {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    border-right: 0;
+    left: -6px;
+    margin-top: -5px;
+    top: 50%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: white;
+    content: "";
+    height: 10px;
+    position: absolute;
+    width: 10px; }
 
 .main {
   position: relative;
@@ -527,6 +647,8 @@ button,
     border-bottom: 0;
     border-right: 0;
     top: -6px;
+    margin-left: -5px;
+    left: 26%;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -535,8 +657,6 @@ button,
     background-color: white;
     content: "";
     height: 10px;
-    left: 26%;
-    margin-left: -5px;
     position: absolute;
     width: 10px; }
 
@@ -717,3 +837,6 @@ a.row {
   margin-top: -60px; }
 .header-retracted .previewer {
   top: 120px; }
+
+.test-chooser.is-active {
+  display: block; }

@@ -61,14 +61,23 @@ $tools-height: 60px;
       border-bottom: 0;
       border-right: 0;
       top: -($size / 2) - 1px;
+      margin-left: -($size / 2);
+      left: $position;
+    }
+
+    @if $direction == left {
+      border: 1px solid $border;
+      border-top: 0;
+      border-right: 0;
+      left: -($size / 2) - 1px;
+      margin-top: -($size / 2);
+      top: $position;
     }
 
     @include transform(rotate(45deg));
     background-color: $background;
     content: "";
     height: $size;
-    left: $position;
-    margin-left: -($size / 2);
     position: absolute;
     width: $size;
   }
@@ -133,6 +142,7 @@ li {
   $button-height: 40px;
   border-radius: 3px;
   border: 0;
+  cursor: pointer;
   display: inline-block;
   font-weight: bold;
   height: $button-height;
@@ -318,14 +328,19 @@ button,
     @include carrot($base-border-color, $base-border-color, 10px);
     @include position(absolute, 50% 25% 0 0);
     @include size($size);
-    background-color: $base-mid;
+    background-color: $base-lite;
     border-radius: $size / 2;
     border: 3px solid $base-background-color;
+    cursor: pointer;
     margin-top: -($size / 2);
     z-index: 1;
 
     &::before {
       top: 31px;
+    }
+
+    &:hover {
+      background-color: $base-dark;
     }
   }
 
@@ -376,6 +391,7 @@ button,
 .test-header {
   @include pad(default);
   @include row();
+  position: relative;
 
   .test-title {
     @include span-columns(2);
@@ -390,19 +406,90 @@ button,
     }
   }
 
-  .fillometer {
-    @include span-columns(8);
+  .test-chooser {
+    @include span-columns(10);
+    @include omega;
+    @include outer-container;
+    display: none;
+  }
+}
+
+.test-status {
+  @include span-columns(8 of 10);
+}
+
+.test-actions {
+  @include span-columns(2 of 10);
+  @include omega;
+  line-height: $fillometer-large-height;
+
+  .button-group {
+    float: right;
+  }
+}
+
+
+.commit-timeline {
+  $commit-color: $base-lite;
+  @include span-columns(7 of 10);
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  height: $fillometer-large-height;
+  position: relative;
+
+  &::before {
+    $height: 4px;
+    @include position(absolute, 50% 0px 0 0px);
+    @include size(100% $height);
+    background-color: $commit-color;
+    content: "";
+    margin-top: -($height / 2);
   }
 
-  .test-actions {
-    @include span-columns(2);
-    @include omega;
-    line-height: $fillometer-large-height;
+  &::after {
+    content: "";
+    @include position(absolute, 0px 0 0px 0px);
+    @include size(60px $fillometer-large-height);
+    @include background-image(linear-gradient(to right, white, rgba(white, 0)));
+    display: block;
+    z-index: 2;
+  }
 
-    .button-group {
-      float: right;
+  .commit {
+    @include box-flex(1);
+    position: relative;
+    height: $fillometer-large-height;
+
+    a {
+      $size: 14px;
+      $margin:  -($size / 2);
+      @include position(absolute, 50% 0px 0 0);
+      @include size($size);
+      border-radius: $size / 2;
+      margin: $margin 0 0 0;
+      cursor: pointer;
+      background-color: $base-background-color;
+      box-shadow: inset 0 0 0 3px $commit-color;
+      display: block;
+      z-index: 1;
+
+      &:hover,
+      &.is-selected {
+        background-color: $commit-color;
+      }
     }
   }
+}
+
+.commit-message {
+  @include span-columns(3 of 10);
+  @include omega;
+  @include carrot($base-lite, white, 10px, 50%, left);
+  line-height: $fillometer-large-height;
+  padding-left: 10px;
+  border-left: 1px solid $base-lite;
 }
 
 .main {
@@ -599,4 +686,8 @@ a.row {
   .previewer {
     top: 120px;
   }
+}
+
+.test-chooser.is-active {
+  display: block;
 }
