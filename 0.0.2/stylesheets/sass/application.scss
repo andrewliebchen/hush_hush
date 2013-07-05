@@ -23,5 +23,5 @@ $max-width: 100%;
 
 // Fonts
 @include font-face(batch-icons, '../../fonts/batch/batch-icons-webfont');
-@include font-face(source-code, '../../fonts/source_code/SourceCodePro-Regular-webfont.eot', normal);
-@include font-face(source-code, '../../fonts/source_code/SourceCodePro-Bold-webfont.eot', bold);
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Regular-webfont', normal);
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Bold-webfont', bold);

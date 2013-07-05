@@ -122,9 +122,13 @@ button,
 }
 
 .preview {
+  @include transition();
   @include position(absolute, 60px 0px 0px 0px);
+  @include size(100%);
   border: 0;
-  height: 100%;
-  width: 100%;
   z-index: 2;
+}
+
+.scroll-container {
+  overflow-y: scroll;
 }

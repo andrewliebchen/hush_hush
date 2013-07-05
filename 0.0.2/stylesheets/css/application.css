@@ -252,7 +252,7 @@ li {
   font-weight: normal !important; }
 
 button,
-.button, .button.action,
+.button, .button.action, .comment-form textarea:focus + .button,
 .button.is-active {
   border-radius: 3px;
   border: 0;
@@ -281,14 +281,14 @@ button,
   .button:active {
     background-color: #bdbdbd; }
 
-.button.action,
+.button.action, .comment-form textarea:focus + .button,
 .button.is-active {
   background-color: blue;
   color: white; }
-  .button.action:hover,
+  .button.action:hover, .comment-form textarea:focus + .button:hover,
   .button.is-active:hover {
     background-color: #0000e6; }
-  .button.action:active,
+  .button.action:active, .comment-form textarea:focus + .button:active,
   .button.is-active:active {
     background-color: #000099; }
 
@@ -303,15 +303,21 @@ button,
     margin-right: 0; }
 
 .preview {
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
   position: absolute;
   top: 60px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  border: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  border: 0;
   z-index: 2; }
+
+.scroll-container {
+  overflow-y: scroll; }
 
 .nav-item {
   display: inline-block;
@@ -447,6 +453,52 @@ button,
 .toolbar {
   float: right;
   margin-top: 9px; }
+
+.comment {
+  padding: 1.618em;
+  border-bottom: 1px solid #999999;
+  box-shadow: inset 0 1px 0 white; }
+  .comment:last-child {
+    border-bottom: 0; }
+  .comment .icon, .comment .block-arrow {
+    color: #999999;
+    font-size: 14px;
+    padding-right: 5px; }
+
+.comment-header {
+  font-weight: bold; }
+
+.comment-footer {
+  color: #999999;
+  font-size: 12px; }
+  .comment-footer time {
+    font-style: italic; }
+
+.comment-form {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+  border-top: 1px solid #999999;
+  height: 180px;
+  z-index: 1; }
+  .comment-form::before {
+    background-image: -webkit-linear-gradient(bottom, #f0f0f0, rgba(240, 240, 240, 0));
+    background-image: linear-gradient(to top, #f0f0f0, rgba(240, 240, 240, 0));
+    position: absolute;
+    top: -21px;
+    right: 0px;
+    left: 0px;
+    content: "";
+    height: 20px; }
+  .comment-form textarea {
+    display: block;
+    height: 80px;
+    margin-bottom: 10px;
+    width: 100%; }
+  .comment-form .button {
+    width: 100%; }
 
 .header {
   -webkit-transition: all 1s;
@@ -754,7 +806,7 @@ a.row {
     margin: 0 5px;
     width: 60%; }
 
-.code-pane {
+.pane {
   -webkit-transition: all 0.15s ease-out 0;
   -moz-transition: all 0.15s ease-out 0;
   transition: all 0.15s ease-out 0;
@@ -762,23 +814,39 @@ a.row {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  z-index: 99; }
+  .pane:before, .pane:after {
+    content: " ";
+    display: table; }
+  .pane:after {
+    clear: both; }
+
+.conversation-pane {
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  background-color: #f0f0f0;
+  border-left: 1px solid #999999;
+  box-shadow: inset 1px 0 0 white;
+  right: -20%;
+  width: 20%; }
+  .conversation-pane .scroll-container {
+    position: absolute;
+    top: 0px;
+    bottom: 180px; }
+
+.code-pane {
   position: absolute;
   right: 0px;
   left: 0px;
   bottom: -130px;
   background-color: rgba(0, 0, 0, 0.8);
-  border-top: 2px solid black;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-top: 1px solid black;
   color: white;
   font-family: source-code, "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   height: 130px;
   line-height: 24px;
-  z-index: 2; }
-  .code-pane:before, .code-pane:after {
-    content: " ";
-    display: table; }
-  .code-pane:after {
-    clear: both; }
+  z-index: 98; }
   .code-pane .line-numbers {
     display: block;
     float: left;
@@ -891,8 +959,15 @@ a.row {
 .test-chooser.is-active {
   display: block; }
 
+.conversation-pane.is-active {
+  right: 0; }
+  .conversation-pane.is-active ~ .code-pane.is-active {
+    right: 20%; }
+  .conversation-pane.is-active ~ .preview {
+    width: 80%; }
+
 .code-pane.is-active {
-  bottom: 0 !important; }
+  bottom: 0; }
 
 @font-face {
   font-family: batch-icons;
@@ -905,12 +980,12 @@ a.row {
   font-family: source-code;
   font-weight: normal;
   font-style: normal;
-  src: url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.eot");
-  src: url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.eot?#iefix") format("embedded-opentype"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.woff") format("woff"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.ttf") format("truetype"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.svg#source-code") format("svg"); }
+  src: url("../../fonts/source-code/SourceCodePro-Regular-webfont.eot");
+  src: url("../../fonts/source-code/SourceCodePro-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/source-code/SourceCodePro-Regular-webfont.woff") format("woff"), url("../../fonts/source-code/SourceCodePro-Regular-webfont.ttf") format("truetype"), url("../../fonts/source-code/SourceCodePro-Regular-webfont.svg#source-code") format("svg"); }
 
 @font-face {
   font-family: source-code;
   font-weight: bold;
   font-style: normal;
-  src: url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.eot");
-  src: url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.eot?#iefix") format("embedded-opentype"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.woff") format("woff"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.ttf") format("truetype"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.svg#source-code") format("svg"); }
+  src: url("../../fonts/source-code/SourceCodePro-Bold-webfont.eot");
+  src: url("../../fonts/source-code/SourceCodePro-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/source-code/SourceCodePro-Bold-webfont.woff") format("woff"), url("../../fonts/source-code/SourceCodePro-Bold-webfont.ttf") format("truetype"), url("../../fonts/source-code/SourceCodePro-Bold-webfont.svg#source-code") format("svg"); }

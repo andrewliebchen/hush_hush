@@ -144,3 +144,63 @@
   float: right;
   margin-top: 9px;
 }
+
+.comment {
+  @include pad($gutter);
+  border-bottom: 1px solid $base-border-color;
+  box-shadow: inset 0 1px 0 white;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .icon {
+    color: $base-mid;
+    font-size: 14px;
+    padding-right: 5px;
+  }
+}
+
+.comment-header {
+  font-weight: bold;
+}
+
+.comment-footer {
+  color: $base-mid;
+  font-size: 12px;
+
+  time {
+    font-style: italic;
+  }
+}
+
+.comment-form {
+  @include position(absolute, 0 0px 0px 0px);
+  background-color: lighten($base-liter, 10%);
+  border-top: 1px solid $base-border-color;
+  height: 180px;
+  z-index: 1;
+
+  &::before {
+    $height: 21px;
+    @include background-image(linear-gradient(to top, $base-liter, rgba($base-liter, 0)));
+    @include position(absolute, -$height 0px 0 0px);
+    content: "";
+    height: $height - 1px;
+  }
+
+  textarea {
+    display: block;
+    height: 80px;
+    margin-bottom: 10px;
+    width: 100%;
+
+    &:focus + .button {
+      @extend .action;
+    }
+  }
+
+  .button {
+    width: 100%;
+  }
+}

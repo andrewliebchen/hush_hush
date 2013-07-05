@@ -223,22 +223,39 @@ a.row {
   }
 }
 
+.pane {
+  @include transition();
+  @include outer-container;
+  z-index: 99;
+}
+
+.conversation-pane {
+  @include position(absolute, 60px 0 0px 0);
+  background-color: $base-liter;
+  border-left: 1px solid $base-border-color;
+  box-shadow: inset 1px 0 0 white;
+  right: -$conversation-width;
+  width: $conversation-width;
+
+  .scroll-container {
+    @include position(absolute, 0px 0 180px 0);
+  }
+}
+
 .code-pane {
   $line-height: 24px;
   $padding-top: 10px;
   $pane-height: $line-height * 5 + $padding-top;
-  @include transition;
-  @include outer-container;
   @include position(absolute, 0 0px 0 0px);
   bottom: -$pane-height;
   background-color: rgba(black, 0.8);
-  border-top: 2px solid black;
-  box-shadow: inset 0 1px 0 rgba(white, 0.5);
+  border-top: 1px solid black;
+  // box-shadow: inset 0 1px 0 rgba(white, 0.5);
   color: white;
   font-family: $base-font-family-mono;
   height: $pane-height; // Initial height
   line-height: $line-height;
-  z-index: 2;
+  z-index: 98;
 
   .line-numbers {
     @include span-columns(1);

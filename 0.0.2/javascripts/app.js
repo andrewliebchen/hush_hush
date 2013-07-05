@@ -22,10 +22,12 @@ $(function(){
   //   $(this).append('<div class="tooltip">' + tooltipMessage + '</div>');
   // });
 
+  // Toggle between fillometer and commits
   $('[data-toggle="test-chooser"]').click(function(){
     $('.test-chooser').toggleClass('is-active');
   });
 
+  // Toggle panes
   $('[data-toggle-pane]').click(function(){
     toggleId = $(this).data('toggle-pane');
     $(this).toggleClass('is-pressed');
