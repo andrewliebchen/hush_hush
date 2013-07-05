@@ -1,0 +1,53 @@
+//************************************************************************//
+// Templates
+//************************************************************************//
+
+.scenario-row {
+  border: 1px solid $base-border-color;
+  border-radius: 3px;
+  margin-bottom: $gutter;
+
+  &:nth-child(4) {
+    @include omega;
+  }
+
+  .fillometer {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.scenario-details {
+  padding: 10px;
+}
+
+.scenario-title {
+  font-family: $base-font-family-mono;
+  text-align: center;
+}
+
+.previewer {
+  @include transition(all, 1s);
+  @include position(absolute, 180px 0px 0px 0px);
+}
+
+.previewer-header {
+  .stepper {
+    margin-right: $gutter;
+  }
+
+  .scenario-title {
+    @include span-columns(6);
+    text-align: left;
+
+    h3 {
+      display: inline-block;
+    }
+  }
+}
+
+.previewer-controls {
+  @include span-columns(6);
+  @include omega;
+}

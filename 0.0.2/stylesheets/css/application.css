@@ -197,18 +197,13 @@ table {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-@font-face {
-  font-family: batch-icons;
-  font-weight: normal;
-  font-style: normal;
-  src: url("../../fonts/batch/batch-icons-webfont.eot");
-  src: url("../../fonts/batch/batch-icons-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/batch/batch-icons-webfont.woff") format("woff"), url("../../fonts/batch/batch-icons-webfont.ttf") format("truetype"), url("../../fonts/batch/batch-icons-webfont.svg#batch-icons") format("svg"); }
-
 body, html {
   color: #333333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 20px; }
+  height: 100%;
+  line-height: 20px;
+  overflow: hidden; }
 
 h1,
 h2,
@@ -743,16 +738,6 @@ a.row {
     .scenario-meta li:last-child {
       border-right: 0; }
 
-.file-status {
-  background-color: #cccccc;
-  border-radius: 2px;
-  display: inline-block;
-  height: 12px;
-  margin-right: 5px;
-  position: relative;
-  top: 2px;
-  width: 12px; }
-
 .view-controls {
   display: block;
   float: left;
@@ -769,6 +754,67 @@ a.row {
     margin: 0 5px;
     width: 60%; }
 
+.code-pane {
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: -130px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: white;
+  font-family: source-code, "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  height: 130px;
+  line-height: 24px;
+  z-index: 2; }
+  .code-pane:before, .code-pane:after {
+    content: " ";
+    display: table; }
+  .code-pane:after {
+    clear: both; }
+  .code-pane .line-numbers {
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 6.17215%;
+    margin-right: 0;
+    border-right: 1px solid #666666;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 10px 1.618em; }
+    .code-pane .line-numbers:last-child {
+      margin-right: 0; }
+    .code-pane .line-numbers li {
+      height: 24px;
+      line-height: 24px;
+      text-align: right; }
+  .code-pane .code-container {
+    display: block;
+    float: left;
+    margin-right: 2.35765%;
+    width: 91.4702%;
+    margin-right: 0;
+    padding-top: 10px; }
+    .code-pane .code-container:last-child {
+      margin-right: 0; }
+  .code-pane code {
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 1.618em; }
+    .code-pane code::selection {
+      background-color: white;
+      color: black; }
+    .code-pane code:hover {
+      background-color: black; }
+
 .scenario-row {
   border: 1px solid #999999;
   border-radius: 3px;
@@ -784,7 +830,7 @@ a.row {
   padding: 10px; }
 
 .scenario-title {
-  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  font-family: source-code, "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   text-align: center; }
 
 .previewer {
@@ -833,6 +879,10 @@ a.row {
 .is-invisible {
   opacity: 0; }
 
+.button.is-pressed {
+  background-color: #999999;
+  color: #333333; }
+
 .header-retracted .header {
   margin-top: -60px; }
 .header-retracted .previewer {
@@ -840,3 +890,27 @@ a.row {
 
 .test-chooser.is-active {
   display: block; }
+
+.code-pane.is-active {
+  bottom: 0 !important; }
+
+@font-face {
+  font-family: batch-icons;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/batch/batch-icons-webfont.eot");
+  src: url("../../fonts/batch/batch-icons-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/batch/batch-icons-webfont.woff") format("woff"), url("../../fonts/batch/batch-icons-webfont.ttf") format("truetype"), url("../../fonts/batch/batch-icons-webfont.svg#batch-icons") format("svg"); }
+
+@font-face {
+  font-family: source-code;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.eot");
+  src: url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.eot?#iefix") format("embedded-opentype"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.woff") format("woff"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.ttf") format("truetype"), url("../../fonts/source_code/SourceCodePro-Regular-webfont.eot.svg#source-code") format("svg"); }
+
+@font-face {
+  font-family: source-code;
+  font-weight: bold;
+  font-style: normal;
+  src: url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.eot");
+  src: url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.eot?#iefix") format("embedded-opentype"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.woff") format("woff"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.ttf") format("truetype"), url("../../fonts/source_code/SourceCodePro-Bold-webfont.eot.svg#source-code") format("svg"); }

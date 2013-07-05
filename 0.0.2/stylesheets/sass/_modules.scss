@@ -1,0 +1,279 @@
+//************************************************************************//
+// Modules
+//************************************************************************//
+
+.header {
+  @include transition(all 1s);
+  border-bottom: 1px solid $base-border-color;
+  height: $header-height;
+  position: relative;
+
+  .logo {
+    @include span-columns(2);
+    @include vertical-center-text($header-height);
+  }
+
+  .nav {
+    @include span-columns(8);
+
+    a {
+      @include vertical-center-text($header-height);
+    }
+  }
+
+  .user.dropdown {
+    float: right;
+    margin-top: 8px;
+  }
+}
+
+.test-header {
+  @include pad(default);
+  @include row();
+  position: relative;
+
+  .test-title {
+    @include span-columns(2);
+
+    .button {
+      margin-right: 10px;
+    }
+
+    h2 {
+      line-height: $fillometer-large-height;
+      display: inline-block;
+    }
+  }
+
+  .test-chooser {
+    @include span-columns(10);
+    @include omega;
+    @include outer-container;
+    display: none;
+  }
+}
+
+.test-status {
+  @include span-columns(8 of 10);
+}
+
+.test-actions {
+  @include span-columns(2 of 10);
+  @include omega;
+  line-height: $fillometer-large-height;
+
+  .button-group {
+    float: right;
+  }
+}
+
+
+.commit-timeline {
+  $commit-color: $base-lite;
+  @include span-columns(7 of 10);
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  height: $fillometer-large-height;
+  position: relative;
+
+  &::before {
+    $height: 4px;
+    @include position(absolute, 50% 0px 0 0px);
+    @include size(100% $height);
+    background-color: $commit-color;
+    content: "";
+    margin-top: -($height / 2);
+  }
+
+  &::after {
+    content: "";
+    @include position(absolute, 0px 0 0px 0px);
+    @include size(60px $fillometer-large-height);
+    @include background-image(linear-gradient(to right, white, rgba(white, 0)));
+    display: block;
+    z-index: 2;
+  }
+
+  .commit {
+    @include box-flex(1);
+    position: relative;
+    height: $fillometer-large-height;
+
+    a {
+      $size: 14px;
+      $margin:  -($size / 2);
+      @include position(absolute, 50% 0px 0 0);
+      @include size($size);
+      border-radius: $size / 2;
+      margin: $margin 0 0 0;
+      cursor: pointer;
+      background-color: $base-background-color;
+      box-shadow: inset 0 0 0 3px $commit-color;
+      display: block;
+      z-index: 1;
+
+      &:hover,
+      &.is-selected {
+        background-color: $commit-color;
+      }
+    }
+  }
+}
+
+.commit-message {
+  @include span-columns(3 of 10);
+  @include omega;
+  @include carrot($base-lite, white, 10px, 50%, left);
+  line-height: $fillometer-large-height;
+  padding-left: 10px;
+  border-left: 1px solid $base-lite;
+}
+
+.main {
+  @include carrot($base-lite, white, 10px, 26%);
+  border-top: 1px solid $base-lite;
+}
+
+.list {
+  @include pad(default $gutter*4 20px);
+  @include row();
+  border-bottom: 1px solid $base-border-color;
+}
+
+.main-header {
+  $height: 60px;
+  @include row();
+  @extend .width-wrapper;
+  border-bottom: 1px solid $base-border-color;
+  height: $height;
+  line-height: $height;
+  position: relative;
+  z-index: 1;
+}
+
+.row {
+  @include span-columns(3);
+  display: block;
+
+  &:hover {
+    box-shadow: 0 1px 8px rgba(black, 0.1);
+
+    .thumbnail::after {
+      $height: 30px;
+      @include position(absolute, 50% 40px 0 40px);
+      background-color: rgba(blue, 0.8);
+      border-radius: $height / 2;
+      color: white;
+      content: "view";
+      display: block;
+      font-weight: bold;
+      height: $height;
+      line-height: $height;
+      margin-top: -($height / 2);
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .thumbnail {
+    position: relative;
+  }
+}
+
+a.row {
+  color: $base-color;
+}
+
+.scenario-meta {
+  @include fill-parent;
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  background-color: lighten($base-liter, 3%);
+  border-top: 1px solid $base-lite;
+
+  li {
+    @include box-flex(1);
+    border-right: 1px solid $base-lite;
+    padding: 5px 0;
+    text-align: center;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+.view-controls {
+  @include span-columns(7);
+
+  .button {
+    float: left;
+    margin: 9px 5px 0 0;
+  }
+
+  .slider {
+    float: left;
+    height: $tools-height;
+    margin: 0 5px;
+    width: 60%;
+  }
+}
+
+.code-pane {
+  $line-height: 24px;
+  $padding-top: 10px;
+  $pane-height: $line-height * 5 + $padding-top;
+  @include transition;
+  @include outer-container;
+  @include position(absolute, 0 0px 0 0px);
+  bottom: -$pane-height;
+  background-color: rgba(black, 0.8);
+  border-top: 2px solid black;
+  box-shadow: inset 0 1px 0 rgba(white, 0.5);
+  color: white;
+  font-family: $base-font-family-mono;
+  height: $pane-height; // Initial height
+  line-height: $line-height;
+  z-index: 2;
+
+  .line-numbers {
+    @include span-columns(1);
+    @include omega;
+    border-right: 1px solid $base-dark;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: $padding-top $gutter;
+
+    li {
+      height: $line-height;
+      line-height: $line-height;
+      text-align: right;
+    }
+  }
+
+  .code-container {
+    @include span-columns(11);
+    @include omega;
+    padding-top: $padding-top;
+  }
+
+  code {
+    display: block;
+    height: $line-height;
+    line-height: $line-height;
+    padding: 0 $gutter;
+
+    &::selection {
+      background-color: white;
+      color: black;
+    }
+
+    &:hover {
+      background-color: black;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+//************************************************************************//
+// States
+//************************************************************************//
+
+.is-hidden {
+  display: none;
+}
+
+.is-invisible {
+  opacity: 0;
+}
+
+.button.is-pressed {
+  background-color: $base-mid;
+  color: $base-darker;
+}
+
+.header-retracted {
+  .header {
+    margin-top: -($header-height);
+  }
+
+  .previewer {
+    top: 120px;
+  }
+}
+
+.test-chooser.is-active {
+  display: block;
+}
+
+.code-pane.is-active {
+  bottom: 0 !important;
+}

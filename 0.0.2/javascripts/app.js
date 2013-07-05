@@ -25,4 +25,10 @@ $(function(){
   $('[data-toggle="test-chooser"]').click(function(){
     $('.test-chooser').toggleClass('is-active');
   });
+
+  $('[data-toggle-pane]').click(function(){
+    toggleId = $(this).data('toggle-pane');
+    $(this).toggleClass('is-pressed');
+    $('#' + toggleId).toggleClass('is-active');
+  });
 });

@@ -39,7 +39,7 @@
         <a href="index.html" class="button icon">&#xF0AA;</a>
         <h2>June 26 <span>3:32pm</span></h2>
       </div>
-      <div id="status" class="test-chooser is-active">
+      <div class="test-chooser is-active">
         <div class="test-status fillometer large status-negative" data-fillometer-width="25%">
           <div class="fillometer-fill">
             <label class="filometer-label">5 failing scenarios</label>
@@ -51,7 +51,7 @@
           <a class="button icon right" data-toggle="test-chooser">&#xF177;</a>
         </div>
       </div>
-      <div id="commit_history" class="test-chooser">
+      <div class="test-chooser">
         <div class="commit-timeline">
           <div class="commit"><a data-tooltip="Initial commit"></a></div>
           <div class="commit"><a></a></div>
@@ -64,7 +64,7 @@
         <div class="commit-message">
           <a href="#" class="sha">956bf49</a>
           <strong>Rough in something awesome</strong>
-          <a class="button icon right" data-toggle="test-chooser">&#xF084;</a>
+          <a class="button icon right" data-toggle-pane="test-chooser">&#xF084;</a>
         </div>
       </div>
     </header>
@@ -97,12 +97,27 @@
             <a href="#" class="button icon" data-tooltip="Differences">&#xF020;</a>
             <a href="#" class="button icon" data-tooltip="Rulers">&#xF128;</a>
             <a href="#" class="button icon" data-tooltip="Conversation">&#xF004;</a>
-            <a href="#" class="button icon" data-tooltip="Code">&#xF061;</a>
+            <a href="#" class="button icon" data-toggle-pane="code" data-tooltip="Code">&#xF061;</a>
             <a href="#" class="button icon" data-tooltip="Open">&#xF147;</a>
           </div>
         </div>
       </header>
+
       <iframe src="http://secure.gofdn.com" border="0" class="preview"></iframe>
+
+      <section id="code" class="pane code-pane">
+        <ol class="line-numbers">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ol>
+        <div class="code-container">
+          <code>This is some code</code>
+          <code>On two lines</code>
+        </div>
+      </section>
     </div>
   </section>
 </body>

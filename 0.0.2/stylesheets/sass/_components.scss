@@ -1,0 +1,146 @@
+//************************************************************************//
+// Components
+//************************************************************************//
+
+.nav-item {
+  display: inline-block;
+  margin-right: $gutter;
+
+  &.current {
+    font-weight: bold;
+  }
+}
+
+.block-arrow {
+  $background-color: blue;
+  @extend .icon;
+  @include size(24px 26px);
+  background-color: $background-color;
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 30px;
+  margin-right: 20px;
+  position: relative;
+  text-align: center;
+  top: 0;
+
+  &::after {
+    @include size(19px);
+    @include transform(rotate(45deg));
+    @include position(absolute, 4px -8px 0 0);
+    background-color: $background-color;
+    border-radius: 3px;
+    content: "";
+    display: block;
+    z-index: -1;
+  }
+}
+
+.avatar {
+  @include size(40px);
+  border: 1px solid $base-border-color;
+
+  img {
+    display: block;
+  }
+}
+
+.fillometer {
+  background-color: $base-liter;
+  border-radius: 3px;
+  border: 1px solid $base-border-color;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+
+  .fillometer-fill {
+    @include position(relative, 0px 0 0px 0px);
+    background-color: $base-mid;
+    float: left;
+    overflow: hidden;
+    height: 100%;
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  &.large {
+    $height: 30px;
+    height: $fillometer-large-height;
+    border: 0;
+
+    label {
+      @include vertical-center-text($fillometer-large-height);
+      float: left;
+      padding-left: 10px;
+    }
+  }
+
+  &.status-positive .fillometer-fill {
+    background-color: $status-positive;
+  }
+
+  &.status-negative .fillometer-fill {
+    background-color: $status-negative;
+  }
+}
+
+.thumbnail {
+  height: golden-ratio(346px, -1); // we'll have to figure out how to do this for real
+  overflow: hidden;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.stepper {
+  float: left;
+  margin-top: 9px;
+}
+
+.slider {
+  position: relative;
+
+  .slider-handle {
+    $size: 20px;
+    @include carrot($base-border-color, $base-border-color, 10px);
+    @include position(absolute, 50% 25% 0 0);
+    @include size($size);
+    background-color: $base-lite;
+    border-radius: $size / 2;
+    border: 3px solid $base-background-color;
+    cursor: pointer;
+    margin-top: -($size / 2);
+    z-index: 1;
+
+    &::before {
+      top: 31px;
+    }
+
+    &:hover {
+      background-color: $base-dark;
+    }
+  }
+
+  .slider-track {
+    $height: 4px;
+    @include position(relative, 50% 0 0 0);
+    background-color: $base-lite;
+    height: $height;
+    margin-top: -($height / 2);
+  }
+}
+
+.toolbar {
+  @extend .button-group;
+  float: right;
+  margin-top: 9px;
+}

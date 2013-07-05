@@ -1,0 +1,45 @@
+//************************************************************************//
+// Mixins and functions
+//************************************************************************//
+
+@mixin vertical-center-text($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin hover-text-decoration {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin carrot($border, $background: white, $size: 10px, $position: 50%, $direction: up) {
+  position: relative;
+
+  &::before {
+    @if $direction == up {
+      border: 1px solid $border;
+      border-bottom: 0;
+      border-right: 0;
+      top: -($size / 2) - 1px;
+      margin-left: -($size / 2);
+      left: $position;
+    }
+
+    @if $direction == left {
+      border: 1px solid $border;
+      border-top: 0;
+      border-right: 0;
+      left: -($size / 2) - 1px;
+      margin-top: -($size / 2);
+      top: $position;
+    }
+
+    @include transform(rotate(45deg));
+    background-color: $background;
+    content: "";
+    height: $size;
+    position: absolute;
+    width: $size;
+  }
+}
