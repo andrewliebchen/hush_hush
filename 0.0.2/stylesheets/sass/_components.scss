@@ -12,7 +12,7 @@
 }
 
 .block-arrow {
-  $background-color: blue;
+  $background-color: $base-color-link;
   @extend .icon;
   @include size(24px 26px);
   background-color: $background-color;
@@ -41,7 +41,7 @@
 
 .avatar {
   @include size(40px);
-  border: 1px solid $base-border-color;
+  border-radius: 5px;
 
   img {
     display: block;

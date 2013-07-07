@@ -15,6 +15,12 @@
   color: $base-darker;
 }
 
+.test.is-collapsed {
+  .scenarios-list {
+    display: none;
+  }
+}
+
 .header-retracted {
   .header {
     margin-top: -($header-height);

@@ -202,8 +202,7 @@ body, html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   height: 100%;
-  line-height: 20px;
-  overflow: hidden; }
+  line-height: 20px; }
 
 h1,
 h2,
@@ -220,6 +219,8 @@ a {
   text-decoration: none; }
   a:hover {
     text-decoration: none; }
+  a:visited {
+    color: #2b6ec2; }
 
 ul {
   margin: 0;
@@ -252,8 +253,8 @@ li {
   font-weight: normal !important; }
 
 button,
-.button, .button.action, .comment-form textarea:focus + .button,
-.button.is-active {
+a.button, a.button.action, .comment-form textarea:focus + a.button,
+a.button.is-active {
   border-radius: 3px;
   border: 0;
   cursor: pointer;
@@ -269,28 +270,28 @@ button,
   text-align: center; }
 
 button,
-.button {
+a.button {
   background-color: #e3e3e3;
   color: #999999; }
   button:hover, button.is-active,
-  .button:hover,
-  .button.is-active {
+  a.button:hover,
+  a.button.is-active {
     background-color: #d6d6d6;
     color: #666666; }
   button:active,
-  .button:active {
+  a.button:active {
     background-color: #bdbdbd; }
 
-.button.action, .comment-form textarea:focus + .button,
-.button.is-active {
-  background-color: blue;
+a.button.action, .comment-form textarea:focus + a.button,
+a.button.is-active {
+  background-color: #357ad2;
   color: white; }
-  .button.action:hover, .comment-form textarea:focus + .button:hover,
-  .button.is-active:hover {
-    background-color: #0000e6; }
-  .button.action:active, .comment-form textarea:focus + .button:active,
-  .button.is-active:active {
-    background-color: #000099; }
+  a.button.action:hover, .comment-form textarea:focus + a.button:hover,
+  a.button.is-active:hover {
+    background-color: #2b6ec2; }
+  a.button.action:active, .comment-form textarea:focus + a.button:active,
+  a.button.is-active:active {
+    background-color: #1d4a84; }
 
 .button-group .button, .toolbar .button {
   border-radius: 0;
@@ -328,7 +329,7 @@ button,
 .block-arrow {
   width: 24px;
   height: 26px;
-  background-color: blue;
+  background-color: #357ad2;
   border-radius: 3px;
   color: white;
   display: inline-block;
@@ -350,7 +351,7 @@ button,
     position: absolute;
     top: 4px;
     right: -8px;
-    background-color: blue;
+    background-color: #357ad2;
     border-radius: 3px;
     content: "";
     display: block;
@@ -359,7 +360,7 @@ button,
 .avatar {
   width: 40px;
   height: 40px;
-  border: 1px solid #999999; }
+  border-radius: 5px; }
   .avatar img {
     display: block; }
 
@@ -741,21 +742,24 @@ button,
   .row:last-child {
     margin-right: 0; }
   .row:hover {
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); }
+    box-shadow: 0 1px 8px rgba(53, 122, 210, 0.5);
+    border-color: #357ad2; }
     .row:hover .thumbnail::after {
       position: absolute;
       top: 50%;
-      right: 40px;
-      left: 40px;
-      background-color: rgba(0, 0, 255, 0.8);
-      border-radius: 15px;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: rgba(53, 122, 210, 0.8);
+      border-radius: 30px;
       color: white;
-      content: "view";
+      content: "\F178";
       display: block;
+      font-family: batch-icons;
+      font-size: 30px;
       font-weight: bold;
-      height: 30px;
-      line-height: 30px;
-      margin-top: -15px;
+      line-height: 60px;
+      margin: -30px 0 0 -30px;
       text-align: center;
       text-transform: uppercase; }
   .row .thumbnail {
@@ -779,6 +783,7 @@ a.row {
   -moz-box-pack: start;
   box-pack: start;
   background-color: #f8f8f8;
+  border-radius: 0 0 3px 3px;
   border-top: 1px solid #cccccc; }
   .scenario-meta li {
     -webkit-box-flex: 1;
@@ -898,7 +903,6 @@ a.row {
   padding: 10px; }
 
 .scenario-title {
-  font-family: source-code, "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   text-align: center; }
 
 .previewer {
@@ -933,13 +937,15 @@ a.row {
   .previewer-controls:last-child {
     margin-right: 0; }
 
-.page-test .header-toggle {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  height: 10px;
-  z-index: 999; }
+.page-test {
+  overflow: hidden; }
+  .page-test .header-toggle {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 10px;
+    z-index: 999; }
 
 .is-hidden {
   display: none; }
@@ -950,6 +956,9 @@ a.row {
 .button.is-pressed {
   background-color: #999999;
   color: #333333; }
+
+.test.is-collapsed .scenarios-list {
+  display: none; }
 
 .header-retracted .header {
   margin-top: -60px; }

@@ -8,7 +8,6 @@ body, html {
   font-size: 14px;
   height: 100%;
   line-height: 20px;
-  overflow: hidden;
 }
 
 h1,
@@ -25,6 +24,10 @@ h4 {
 a {
   @include hover-text-decoration;
   text-decoration: none;
+
+  &:visited {
+    color: darken($base-color-link, 5%);
+  }
 }
 
 ul {
@@ -50,7 +53,7 @@ li {
 }
 
 .icon {
-  font-family: batch-icons;
+  font-family: $base-font-family-icon;
   font-size: 24px;
   font-weight: normal !important;
 }
@@ -73,7 +76,7 @@ li {
 }
 
 button,
-.button {
+a.button {
   @extend %button;
   background-color: darken($base-liter, 5%);
   color: $base-mid;
@@ -89,18 +92,18 @@ button,
   }
 }
 
-.button.action,
-.button.is-active {
+a.button.action,
+a.button.is-active {
   @extend %button;
-  background-color: blue;
+  background-color: $base-color-link;
   color: white;
 
   &:hover {
-    background-color: darken(blue, 5%);
+    background-color: darken($base-color-link, 5%);
   }
 
   &:active {
-    background-color: darken(blue, 20%);
+    background-color: darken($base-color-link, 20%);
   }
 }
 

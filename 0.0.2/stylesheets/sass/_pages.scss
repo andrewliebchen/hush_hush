@@ -7,6 +7,8 @@
 }
 
 .page-test {
+  overflow: hidden;
+
   .header-toggle {
     @include position(absolute, 0px 0px 0 0px);
     height: 10px;

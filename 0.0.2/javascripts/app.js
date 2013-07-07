@@ -5,6 +5,12 @@ $(function(){
     $(this).children('.fillometer-fill').css('width', fillometerWidth);
   });
 
+  // Collapse scenario list
+  $('[data-collapse="scenarios"]').click(function(){
+    $(this).toggleClass('is-pressed');
+    $(this).parents('.test').toggleClass('is-collapsed');
+  });
+
   // Hide the header
   $('body.page-test').addClass('header-retracted');
 
