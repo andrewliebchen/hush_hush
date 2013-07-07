@@ -307,15 +307,19 @@ a.button.is-active {
   -webkit-transition: all 0.15s ease-out 0;
   -moz-transition: all 0.15s ease-out 0;
   transition: all 0.15s ease-out 0;
-  position: absolute;
-  top: 60px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
+  position: relative;
   width: 100%;
   height: 100%;
-  border: 0;
   z-index: 2; }
+  .preview iframe {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 0; }
 
 .scroll-container {
   overflow-y: scroll; }
@@ -410,7 +414,7 @@ a.button.is-active {
 
 .slider {
   position: relative; }
-  .slider .slider-handle {
+  .slider .ui-slider-handle {
     position: relative;
     position: absolute;
     top: 50%;
@@ -422,8 +426,9 @@ a.button.is-active {
     border: 3px solid white;
     cursor: pointer;
     margin-top: -10px;
+    outline: none;
     z-index: 1; }
-    .slider .slider-handle::before {
+    .slider .ui-slider-handle::before {
       border: 1px solid #999999;
       border-bottom: 0;
       border-right: 0;
@@ -440,11 +445,11 @@ a.button.is-active {
       height: 10px;
       position: absolute;
       width: 10px; }
-    .slider .slider-handle::before {
+    .slider .ui-slider-handle::before {
       top: 31px; }
-    .slider .slider-handle:hover {
+    .slider .ui-slider-handle:hover, .slider .ui-slider-handle:active {
       background-color: #666666; }
-  .slider .slider-track {
+  .slider .ui-slider-track {
     position: relative;
     top: 50%;
     background-color: #cccccc;

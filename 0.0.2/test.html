@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="stylesheets/css/application.css" type="text/css" media="screen">
 
   <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="javascripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="javascripts/app.js"></script>
 </head>
 <body class="page-test">
@@ -22,9 +23,6 @@
         </a>
         <a href="#" class="nav-item branch current">
           <span class="block-arrow">&#xF175;</span>Topic Branch Name
-        </a>
-        <a href="#" class="nav-item commit hidden">
-          <span class="block-arrow">&#xF177;</span>Choose a commit
         </a>
       </nav>
       <div class="dropdown user avatar">
@@ -85,11 +83,10 @@
 
         <div class="previewer-controls">
           <div class="view-controls">
-            <a href="#" class="button icon">&#xF11E;</a>
+            <a href="#" class="button icon is-pressed">&#xF11E;</a>
             <a href="#" class="button icon">&#xF109;</a>
-            <div class="slider">
-              <div class="slider-handle"></div>
-              <div class="slider-track"></div>
+            <div id="previewer-slider" class="slider">
+              <div class="ui-slider-track"></div>
             </div>
             <a href="#" class="button icon">&#xF175;</a>
           </div>
@@ -157,7 +154,10 @@
         </form>
       </section>
 
-      <iframe src="http://secure.gofdn.com" border="0" class="preview"></iframe>
+      <div class="preview">
+        <iframe src="https://en.wikipedia.org" border="0" id="master_view"></iframe>
+        <iframe src="https://es.wikipedia.org" border="0" id="branch_view" style="opacity: 0.5"></iframe>
+      </div>
 
       <section id="code" class="pane code-pane">
         <ol class="line-numbers">

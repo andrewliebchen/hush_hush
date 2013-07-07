@@ -39,4 +39,15 @@ $(function(){
     $(this).toggleClass('is-pressed');
     $('#' + toggleId).toggleClass('is-active');
   });
+
+  // Preview slider
+  $('#previewer-slider').slider({
+    min: 0,
+    max: 100,
+    value: 50,
+    slide: function(event, ui){
+      opacityValue = ui.value / 100;
+      $('#branch_view').css('opacity', opacityValue);
+    }
+  });
 });

@@ -109,7 +109,7 @@
 .slider {
   position: relative;
 
-  .slider-handle {
+  .ui-slider-handle {
     $size: 20px;
     @include carrot($base-border-color, $base-border-color, 10px);
     @include position(absolute, 50% 25% 0 0);
@@ -119,18 +119,20 @@
     border: 3px solid $base-background-color;
     cursor: pointer;
     margin-top: -($size / 2);
+    outline: none;
     z-index: 1;
 
     &::before {
       top: 31px;
     }
 
-    &:hover {
+    &:hover,
+    &:active {
       background-color: $base-dark;
     }
   }
 
-  .slider-track {
+  .ui-slider-track {
     $height: 4px;
     @include position(relative, 50% 0 0 0);
     background-color: $base-lite;
