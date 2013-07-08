@@ -1,0 +1,27 @@
+//************************************************************************//
+// Variables
+//************************************************************************//
+
+$base-darker: #333;
+$base-dark: #666;
+$base-mid: #999;
+$base-lite: #CCC;
+$base-liter: #F0F0F0;
+
+$base-color: $base-darker;
+$base-color-link: rgb(53, 122, 210);
+$base-background-color: white;
+$base-border-color: $base-mid;
+$base-shadow: 0 1px 0 white;
+
+$status-positive: green;
+$status-negative: rgb(211, 66, 72);
+
+$header-height: 60px;
+$fillometer-large-height: 40px;
+$tools-height: 40px;
+$conversation-width: 20%;
+
+$base-font-family: $helvetica;
+$base-font-family-icon: batch-icons;
+$base-font-family-mono: source-code, $monospace;

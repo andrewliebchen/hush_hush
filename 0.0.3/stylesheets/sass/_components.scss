@@ -1,0 +1,176 @@
+//************************************************************************//
+// Components
+//************************************************************************//
+
+.avatar {
+  @include size(40px);
+  border-radius: 5px;
+  overflow: hidden;
+
+  &.small {
+    @include size(30px);
+  }
+
+  img {
+    display: block;
+    @include size(100%);
+  }
+}
+
+.fillometer {
+  background-color: $base-liter;
+  border-radius: 3px;
+  border: 1px solid $base-border-color;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+
+  .fillometer-fill {
+    @include position(relative, 0px 0 0px 0px);
+    background-color: $base-mid;
+    float: left;
+    overflow: hidden;
+    height: 100%;
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  &.status-positive .fillometer-fill {
+    background-color: $status-positive;
+  }
+
+  &.status-negative .fillometer-fill {
+    background-color: $status-negative;
+  }
+}
+
+.thumbnail {
+  height: golden-ratio(346px, -1); // we'll have to figure out how to do this for real
+  overflow: hidden;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.stepper {
+  float: left;
+}
+
+.slider {
+  position: relative;
+
+  .ui-slider-handle {
+    $size: 20px;
+    @include carrot($base-border-color, $base-border-color, 10px);
+    @include position(absolute, 50% 25% 0 0);
+    @include size($size);
+    background-color: $base-lite;
+    border-radius: $size / 2;
+    border: 3px solid $base-background-color;
+    cursor: pointer;
+    margin-top: -($size / 2);
+    outline: none;
+    z-index: 1;
+
+    &::before {
+      top: 31px;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $base-dark;
+    }
+  }
+
+  .ui-slider-track {
+    $height: 4px;
+    @include position(relative, 50% 0 0 0);
+    background-color: $base-lite;
+    height: $height;
+    margin-top: -($height / 2);
+  }
+}
+
+.toolbar {
+  @extend .button-group;
+  float: right;
+}
+
+.preview {
+  @include size(100%);
+  @include transition();
+  position: relative;
+  z-index: 2;
+
+  iframe {
+    @include position(absolute, 0px 0px 0px 0px);
+    @include size(100%);
+    border: 0;
+  }
+}
+
+.comment {
+  @include pad($gutter);
+  border-bottom: 1px solid $base-border-color;
+  box-shadow: inset 0 1px 0 white;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .icon {
+    color: $base-mid;
+    font-size: 14px;
+    padding-right: 5px;
+  }
+}
+
+.comment-header {
+  font-weight: bold;
+}
+
+.comment-footer {
+  color: $base-mid;
+  font-size: 12px;
+
+  time {
+    font-style: italic;
+  }
+}
+
+.comment-form {
+  @include position(absolute, 0 0px 0px 0px);
+  background-color: lighten($base-liter, 10%);
+  border-top: 1px solid $base-border-color;
+  height: 180px;
+  z-index: 1;
+
+  &::before {
+    $height: 21px;
+    @include background-image(linear-gradient(to top, $base-liter, rgba($base-liter, 0)));
+    @include position(absolute, -$height 0px 0 0px);
+    content: "";
+    height: $height - 1px;
+  }
+
+  textarea {
+    display: block;
+    height: 80px;
+    margin-bottom: 10px;
+    width: 100%;
+
+    &:focus + .button {
+      @extend .action;
+    }
+  }
+
+  .button {
+    width: 100%;
+  }
+}

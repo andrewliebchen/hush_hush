@@ -1,0 +1,143 @@
+//************************************************************************//
+// Elements
+//************************************************************************//
+
+body, html {
+  color: $base-color;
+  font-family: $base-font-family;
+  font-size: 14px;
+  height: 100%;
+  line-height: 20px;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+
+  span {
+    font-weight: 200;
+  }
+}
+
+h1 {
+  font-size: 24px;
+}
+
+a {
+  @include hover-text-decoration;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($base-color-link, 5%);
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.width-wrapper {
+  @include outer-container;
+  @include pad(0 default);
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.icon {
+  font-family: $base-font-family-icon;
+  font-size: 24px;
+  font-weight: normal !important;
+}
+
+%button {
+  $button-height: 40px;
+  border-radius: 3px;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: $button-height;
+  line-height: $button-height;
+  margin: 0;
+  min-width: $button-height;
+  outline: none;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+}
+
+button,
+a.button {
+  @extend %button;
+  background-color: darken($base-liter, 5%);
+  color: $base-mid;
+
+  &.is-pressed {
+    background-color: $base-mid;
+    color: $base-darker;
+  }
+
+  &:hover,
+  &.is-active {
+    background-color: darken($base-liter, 10%);
+    color: $base-dark;
+  }
+
+  &:active {
+    background-color: darken($base-liter, 20%);
+  }
+}
+
+a.button.action,
+a.button.is-active {
+  @extend %button;
+  background-color: $base-color-link;
+  color: white;
+
+  &:hover {
+    background-color: darken($base-color-link, 5%);
+  }
+
+  &:active {
+    background-color: darken($base-color-link, 20%);
+  }
+}
+
+.button-group {
+  .button {
+    border-radius: 0;
+    float: left;
+    margin-right: 2px;
+
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.scroll-container {
+  overflow-y: scroll;
+}
+
+.logo {
+  float: left;
+}

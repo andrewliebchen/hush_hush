@@ -1,0 +1,33 @@
+//************************************************************************//
+// States
+//************************************************************************//
+
+.is-hidden {
+  display: none;
+}
+
+.is-invisible {
+  opacity: 0;
+}
+
+.test.is-collapsed {
+  .scenarios-list {
+    display: none;
+  }
+}
+
+.conversation-pane.is-active {
+  right: 0;
+
+  ~ .code-pane.is-active {
+    right: $conversation-width;
+  }
+
+  ~ .preview {
+    width: 100% - $conversation-width;
+  }
+}
+
+.code-pane.is-active {
+  bottom: 0;
+}

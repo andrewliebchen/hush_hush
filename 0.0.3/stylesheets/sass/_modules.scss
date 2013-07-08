@@ -1,0 +1,248 @@
+//************************************************************************//
+// Modules
+//************************************************************************//
+
+header {
+  @include pad(10px);
+  @include row();
+  border-bottom: 1px solid $base-border-color;
+  height: 60px;
+
+  h1 {
+    float: left;
+    line-height: 40px;
+    margin-left: 10px;
+  }
+}
+
+.aside {
+  @include span-columns(3);
+
+  .aside-nav {
+    @include pad(10px);
+    @include row();
+    @include display-box;
+    @include box-align(start);
+    @include box-orient(horizontal);
+    @include box-pack(start);
+    border-bottom: 1px solid $base-lite;
+
+    a.button {
+      @include box-flex(1);
+    }
+  }
+}
+
+.list.scenarios {
+  @include fill-parent;
+  @include pad(0 $gutter $gutter);
+  @include row();
+  border-bottom: 1px solid $base-border-color;
+}
+
+.scenarios-header {
+  @include pad(10px 0);
+  border-color: $base-lite;
+  height: auto;
+  margin-bottom: $gutter / 2;
+
+  .avatar {
+    float: left;
+    margin-right: 10px;
+  }
+
+  h2 {
+    line-height: 30px;
+  }
+}
+
+.row.scenario {
+  @include fill-parent;
+  border-radius: 3px;
+  border: 1px solid $base-border-color;
+  display: block;
+  margin-bottom: $gutter;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border-color: $base-color-link;
+    box-shadow: 0 1px 8px rgba($base-color-link, 0.5);
+
+    .thumbnail::after {
+      $size: 60px;
+      $margin: -($size / 2);
+      @include position(absolute, 50% 0 0 50%);
+      @include size($size);
+      background-color: rgba($base-color-link, 0.8);
+      border-radius: $size / 2;
+      color: white;
+      content: "\F178";
+      display: block;
+      font-family: $base-font-family-icon;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: $size;
+      margin: $margin 0 0 $margin;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .thumbnail {
+    position: relative;
+  }
+
+  .fillometer {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+a.row.scenario {
+  color: $base-color;
+}
+
+.scenario-title {
+  padding: 10px;
+}
+
+.scenario-meta {
+  @include fill-parent;
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  background-color: lighten($base-liter, 3%);
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid $base-lite;
+
+  li {
+    @include box-flex(1);
+    border-right: 1px solid $base-lite;
+    padding: 5px 0;
+    text-align: center;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+.main {
+  @include span-columns(9.3);
+  @include omega;
+  @include position(absolute, 0px 0px 0px 0);
+  background-color: white;
+  border-left: 1px solid $base-border-color;
+}
+
+.main-header {
+  @include outer-container;
+}
+
+.feature-title {
+  @include span-columns(5 of 9);
+
+  h3 {
+    @include span-columns(2 of 5);
+    float: left;
+    margin-left: 5px;
+  }
+}
+
+.controls {
+  @include span-columns(4 of 9);
+  float: right;
+}
+
+.view-controls {
+  @include span-columns(3.5 of 4);
+  @include omega;
+
+  .button {
+    float: left;
+    margin-right: 5px;
+  }
+
+  .slider {
+    float: left;
+    height: $tools-height;
+    margin: 0 5px;
+    width: 60%;
+  }
+}
+
+.pane {
+  @include transition();
+  @include outer-container;
+  z-index: 99;
+}
+
+.conversation-pane {
+  @include position(absolute, 60px 0 0px 0);
+  background-color: $base-liter;
+  border-left: 1px solid $base-border-color;
+  box-shadow: inset 1px 0 0 white;
+  right: -$conversation-width;
+  width: $conversation-width;
+
+  .scroll-container {
+    @include position(absolute, 0px 0 180px 0);
+  }
+}
+
+.code-pane {
+  $line-height: 24px;
+  $padding-top: 10px;
+  $pane-height: $line-height * 5 + $padding-top;
+  @include position(absolute, 0 0px 0 0px);
+  bottom: -$pane-height;
+  background-color: rgba(black, 0.8);
+  border-top: 1px solid black;
+  color: white;
+  font-family: $base-font-family-mono;
+  height: $pane-height; // Initial height
+  line-height: $line-height;
+  z-index: 98;
+
+  .line-numbers {
+    @include span-columns(1);
+    @include omega;
+    border-right: 1px solid $base-dark;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: $padding-top $gutter;
+
+    li {
+      height: $line-height;
+      line-height: $line-height;
+      text-align: right;
+    }
+  }
+
+  .code-container {
+    @include span-columns(11);
+    @include omega;
+    padding-top: $padding-top;
+  }
+
+  code {
+    display: block;
+    height: $line-height;
+    line-height: $line-height;
+    padding: 0 $gutter;
+
+    &::selection {
+      background-color: white;
+      color: black;
+    }
+
+    &:hover {
+      background-color: black;
+    }
+  }
+}

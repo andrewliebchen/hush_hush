@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Top Secret Prototype</title>
+
+  <link rel="stylesheet" href="stylesheets/css/application.css" type="text/css" media="screen">
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="javascripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="javascripts/app.js"></script>
+</head>
+<body class="page-home">
+  <aside class="aside">
+    <header class="aside-header">
+      <a class="button icon left">&#xF0AA;</a>
+      <h1 class="left"><a href="#">Main Repository</a></h1>
+    </header>
+    <nav class="aside-nav button-group">
+      <a href="#" class="button is-pressed">Mine</a>
+      <a href="#" class="button">Recent</a>
+      <a href="#" class="button">History</a>
+    </nav>
+    <div class="list scenarios">
+      <header class="scenarios-header">
+        <div class="user avatar small">
+          <img src="https://si0.twimg.com/profile_images/3763505210/6da8211853bbff007cef9e7ad52a8f61.png" class="avatar">
+        </div>
+        <h2>June 24 <span>3:18pm</span></h2>
+      </header>
+      <div class="row scenario">
+        <div class="thumbnail">
+          <img src="https://sprint.ly/product/8862/file/53421">
+        </div>
+        <div class="fillometer status-negative" data-fillometer-width="80%">
+          <div class="fillometer-fill"></div>
+        </div>
+        <h4 class="scenario-title">feature/feature_filename.rb</h4>
+        <ul class="scenario-meta">
+          <li>6 files</li>
+          <li>5/7 steps</li>
+          <li>Failed</li>
+        </ul>
+      </div>
+      <div class="row scenario">
+        <div class="thumbnail">
+          <img src="https://sprint.ly/product/8862/file/53421">
+        </div>
+        <div class="fillometer status-negative" data-fillometer-width="80%">
+          <div class="fillometer-fill"></div>
+        </div>
+        <h4 class="scenario-title">feature/feature_filename.rb</h4>
+        <ul class="scenario-meta">
+          <li>6 files</li>
+          <li>5/7 steps</li>
+          <li>Failed</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <section class="main">
+    <header class="main-header">
+      <div class="feature-title">
+        <nav class="stepper">
+          <div class="button-group">
+            <a href="#" class="button icon">&#8701;</a>
+            <a href="#" class="button icon">&#8702;</a>
+          </div>
+        </nav>
+        <h3><span>1 of 5</span> "When I do something, something happens"</h3>
+        <div class="toolbar">
+          <a href="#" class="button icon" data-tooltip="Differences">&#xF020;</a>
+          <a href="#" class="button icon" data-tooltip="Rulers">&#xF128;</a>
+          <a href="#" class="button icon" data-toggle-pane="conversation" data-tooltip="Conversation">&#xF004;</a>
+          <a href="#" class="button icon" data-toggle-pane="code" data-tooltip="Code">&#xF061;</a>
+          <a href="#" class="button icon" data-tooltip="Open">&#xF147;</a>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="view-controls">
+          <a href="#" class="button icon is-pressed">&#xF11E;</a>
+          <a href="#" class="button icon">&#xF109;</a>
+          <div id="preview_slider" class="slider">
+            <div class="ui-slider-track"></div>
+          </div>
+          <a href="#" class="button icon">&#xF175;</a>
+        </div>
+        <div class="user avatar right">
+          <img src="https://si0.twimg.com/profile_images/3763505210/6da8211853bbff007cef9e7ad52a8f61.png" class="avatar">
+        </div>
+      </div>
+    </header>
+
+    <section id="conversation" class="pane conversation-pane">
+      <div class="scroll-container">
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>3 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+      </div>
+      <form class="comment comment-form">
+        <textarea></textarea>
+        <a href="#" class="button">Add comment</a>
+      </form>
+    </section>
+
+    <div class="preview">
+      <iframe src="https://en.wikipedia.org" border="0" id="master_view"></iframe>
+      <iframe src="https://es.wikipedia.org" border="0" id="branch_view" style="opacity: 0.5"></iframe>
+    </div>
+
+    <section id="code" class="pane code-pane">
+      <ol class="line-numbers">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ol>
+      <div class="code-container">
+        <code>This is some code</code>
+        <code>On two lines</code>
+      </div>
+    </section>
+  </section>
+</body>
+</html>
