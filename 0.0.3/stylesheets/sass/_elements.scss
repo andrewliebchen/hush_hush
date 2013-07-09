@@ -3,6 +3,7 @@
 //************************************************************************//
 
 body, html {
+  background-color: $base-dark;
   color: $base-color;
   font-family: $base-font-family;
   font-size: 14px;
@@ -87,13 +88,13 @@ a.button {
   color: $base-mid;
 
   &.is-pressed {
-    background-color: $base-mid;
+    background-color: $base-mid !important;
     color: $base-darker;
   }
 
   &:hover,
   &.is-active {
-    background-color: darken($base-liter, 10%);
+    background-color: darken($base-liter, 10%) !important;
     color: $base-dark;
   }
 

@@ -60,6 +60,15 @@
 
 .stepper {
   float: left;
+  margin: 0 5px;
+
+  a {
+    $size: 40px;
+    @include size(30px $size);
+    color: $base-lite;
+    display: inline-block;
+    line-height: $size;
+  }
 }
 
 .slider {
@@ -84,7 +93,7 @@
 
     &:hover,
     &:active {
-      background-color: $base-dark;
+      background-color: $base-color-link;
     }
   }
 
@@ -98,14 +107,34 @@
 }
 
 .toolbar {
-  @extend .button-group;
+  @include position(absolute, 60px 0 0px 0px);
+  background-color: white;
   float: right;
+  width: $main-offset;
+  z-index: 9;
+
+  a {
+    @include size($main-offset);
+    color: $base-mid;
+    display: block;
+    line-height: $main-offset;
+    text-align: center;
+
+    &.is-pressed {
+      color: $base-color-link;
+    }
+  }
 }
 
 .preview {
+  @include position(absolute, 0px 0 0px 60px);
   @include size(100%);
   @include transition();
+  border-left: 1px solid $base-border-color;
+  border-top: 1px solid $base-border-color;
   position: relative;
+  border-top-left-radius: 5px;
+  overflow: hidden;
   z-index: 2;
 
   iframe {

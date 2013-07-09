@@ -18,9 +18,8 @@ $status-positive: green;
 $status-negative: rgb(211, 66, 72);
 
 $header-height: 60px;
-$fillometer-large-height: 40px;
-$tools-height: 40px;
-$conversation-width: 20%;
+$main-offset: $header-height;
+$conversation-width: 25%;
 
 $base-font-family: $helvetica;
 $base-font-family-icon: batch-icons;

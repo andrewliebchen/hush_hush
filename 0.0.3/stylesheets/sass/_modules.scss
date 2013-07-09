@@ -5,105 +5,110 @@
 header {
   @include pad(10px);
   @include row();
-  border-bottom: 1px solid $base-border-color;
-  height: 60px;
+  height: $header-height;
 
   h1 {
     float: left;
     line-height: 40px;
     margin-left: 10px;
+
+    a,
+    a:visited {
+      color: white;
+    }
   }
 }
 
 .aside {
   @include span-columns(3);
 
-  .aside-nav {
-    @include pad(10px);
-    @include row();
-    @include display-box;
-    @include box-align(start);
-    @include box-orient(horizontal);
-    @include box-pack(start);
-    border-bottom: 1px solid $base-lite;
+  .button {
+    background-color: $base-darker;
+    color: $base-dark;
+  }
+}
 
-    a.button {
-      @include box-flex(1);
-    }
+.aside-nav {
+  @include pad(0 10px 10px);
+  @include row();
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  border-bottom: 1px solid $base-darker;
+
+  a.button {
+    @include box-flex(1);
   }
 }
 
 .list.scenarios {
   @include fill-parent;
-  @include pad(0 $gutter $gutter);
+  @include pad(0);
   @include row();
-  border-bottom: 1px solid $base-border-color;
+  margin-bottom: $gutter;
 }
 
 .scenarios-header {
-  @include pad(10px 0);
+  @include pad(10px);
   border-color: $base-lite;
+  color: $base-liter;
   height: auto;
-  margin-bottom: $gutter / 2;
 
   .avatar {
-    float: left;
+    border: 1px solid $base-lite;
+    float: right;
     margin-right: 10px;
   }
 
   h2 {
     line-height: 30px;
   }
+
+  .icon {
+    color: $base-darker;
+    margin-right: 10px;
+  }
 }
 
 .row.scenario {
+  $height: 80px;
   @include fill-parent;
-  border-radius: 3px;
-  border: 1px solid $base-border-color;
-  display: block;
-  margin-bottom: $gutter;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  background-color: white;
+  cursor: pointer;
+  height: $height;
+  margin-bottom: 3px;
+  opacity: 0.2;
+  overflow: hidden;
 
   &:hover {
-    border-color: $base-color-link;
-    box-shadow: 0 1px 8px rgba($base-color-link, 0.5);
-
-    .thumbnail::after {
-      $size: 60px;
-      $margin: -($size / 2);
-      @include position(absolute, 50% 0 0 50%);
-      @include size($size);
-      background-color: rgba($base-color-link, 0.8);
-      border-radius: $size / 2;
-      color: white;
-      content: "\F178";
-      display: block;
-      font-family: $base-font-family-icon;
-      font-size: 30px;
-      font-weight: bold;
-      line-height: $size;
-      margin: $margin 0 0 $margin;
-      text-align: center;
-      text-transform: uppercase;
-    }
+    opacity: 0.8;
   }
 
-  .thumbnail {
-    position: relative;
+  &.is-active {
+    opacity: 1;
+  }
+
+  .media-image {
+    @include box-flex(1);
+    border-right: 1px solid $base-border-color;
+    overflow: hidden;
+    width: 80px;
+  }
+
+  .media-body {
+    @include box-flex(2);
   }
 
   .fillometer {
+    background-color: transparent;
     border-radius: 0;
-    border-left: 0;
-    border-right: 0;
+    border: 0;
   }
-}
-
-a.row.scenario {
-  color: $base-color;
 }
 
 .scenario-title {
@@ -116,9 +121,6 @@ a.row.scenario {
   @include box-align(start);
   @include box-orient(horizontal);
   @include box-pack(start);
-  background-color: lighten($base-liter, 3%);
-  border-radius: 0 0 3px 3px;
-  border-top: 1px solid $base-lite;
 
   li {
     @include box-flex(1);
@@ -137,7 +139,7 @@ a.row.scenario {
   @include omega;
   @include position(absolute, 0px 0px 0px 0);
   background-color: white;
-  border-left: 1px solid $base-border-color;
+  // border-left: 1px solid $base-darker;
 }
 
 .main-header {
@@ -145,23 +147,15 @@ a.row.scenario {
 }
 
 .feature-title {
-  @include span-columns(5 of 9);
-
-  h3 {
-    @include span-columns(2 of 5);
-    float: left;
-    margin-left: 5px;
-  }
+  @include span-columns(4 of 9);
+  line-height: 40px;
 }
 
-.controls {
-  @include span-columns(4 of 9);
-  float: right;
+.feature-controls {
+  @include span-columns(5 of 9);
 }
 
 .view-controls {
-  @include span-columns(3.5 of 4);
-  @include omega;
 
   .button {
     float: left;
@@ -170,7 +164,7 @@ a.row.scenario {
 
   .slider {
     float: left;
-    height: $tools-height;
+    height: 40px;
     margin: 0 5px;
     width: 60%;
   }
@@ -183,9 +177,10 @@ a.row.scenario {
 }
 
 .conversation-pane {
-  @include position(absolute, 60px 0 0px 0);
+  @include position(absolute, $header-height 0 0px 0);
   background-color: $base-liter;
   border-left: 1px solid $base-border-color;
+  border-top: 1px solid $base-border-color;
   box-shadow: inset 1px 0 0 white;
   right: -$conversation-width;
   width: $conversation-width;
@@ -210,12 +205,12 @@ a.row.scenario {
   z-index: 98;
 
   .line-numbers {
-    @include span-columns(1);
-    @include omega;
     border-right: 1px solid $base-dark;
+    float: left;
     margin-bottom: 0;
     margin-top: 0;
     padding: $padding-top $gutter;
+    width: $main-offset + 1px;
 
     li {
       height: $line-height;
