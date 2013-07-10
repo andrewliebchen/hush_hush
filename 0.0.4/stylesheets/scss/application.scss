@@ -1,0 +1,228 @@
+//************************************************************************//
+// IMPORTS
+//************************************************************************//
+
+@import "vendor/normalize";
+@import "bourbon/bourbon";
+
+// Neat settings
+@import "neat/neat-helpers";
+$max-width: 100%;
+
+@import "neat/neat";
+
+// Fonts
+@include font-face(batch-icons, '../../fonts/batch/batch-icons-webfont');
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Regular-webfont', normal);
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Bold-webfont', bold);
+
+//************************************************************************//
+// VARIABLES
+//************************************************************************//
+
+$color-background: #333;
+$color-midground:  #555;
+$color-foreground: #F0F0F0;
+
+$small:  em(20);
+$medium: em(40);
+$large:  em(60);
+
+$padding: em(10);
+
+$font: $helvetica;
+$font-mono: source-code, $monospace;
+$font-icon: batch-icons;
+
+
+//************************************************************************//
+// ELEMENTS
+//************************************************************************//
+
+html,
+body {
+  background-color: $color-background;
+  font-family: $font;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-foreground;
+}
+
+h1,
+h2,
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: em(36);
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.button {
+  $size: $medium;
+  background-color: $color-midground;
+  border-radius: 5px;
+  color: $color-foreground;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: $size;
+  line-height: $size;
+  min-width: $size;
+  padding: 0 em(10);
+  text-align: center;
+
+  &.active {
+    background-color: $color-foreground;
+    color: $color-midground;
+  }
+}
+
+.button-group {
+  .button {
+    border-radius: 0;
+    float: left;
+    margin-right: 3px;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+      margin-right: 0;
+    }
+
+    &:only-child {
+      border-radius: 5px;
+    }
+  }
+}
+
+.icon {
+  font-family: $font-icon;
+  font-weight: normal;
+  padding-right: 5px;
+}
+
+//************************************************************************//
+// COMPONENTS
+//************************************************************************//
+
+.avatar {
+  @include size($medium);
+  border-radius: $medium / 2;
+  overflow: hidden;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.avatar.small {
+  @include size($small);
+  border-radius: $small / 2;
+}
+
+
+
+//************************************************************************//
+// MODULES
+//************************************************************************//
+
+header {
+  @include pad($padding default);
+  border-bottom: 1px solid $color-midground;
+  color: $color-midground;
+  height: $large;
+  line-height: $medium;
+}
+
+.sidebar {
+  @include span-columns(3);
+  @include omega;
+  @include pad($padding 0 default default);
+
+  nav {
+    @include box(horizontal, start, stretch);
+    padding-top: em(10);
+    width: 100%;
+
+    .button {
+      @include box-flex(1);
+      display: block;
+      float: none;
+    }
+  }
+
+  ol {
+    margin-top: $gutter;
+    border: 1px solid $color-midground;
+    border-radius: 5px;
+
+    li {
+      @include row();
+      height: $large;
+      line-height: $large;
+      border-top: 1px solid $color-midground;
+      padding: 0 em(20);
+    }
+
+    li.header {
+      background-color: $color-midground;
+      border: 0;
+      color: lighten($color-midground, 40%);
+      height: $medium;
+      line-height: $medium;
+    }
+
+    .avatar.small {
+      margin: em(20) em(10) 0 0;
+      float: left;
+    }
+  }
+}
+
+.main {
+  @include span-columns(9);
+  @include omega;
+  @include position(absolute, $large 0px 0px 0);
+  border-left: 1px solid $color-midground;
+  background-color: lighten($color-background, 3%);
+}
+
+.main-header {
+  @include pad(em(20) default);
+  color: $color-foreground;
+  border: 0;
+}
+
+
+//************************************************************************//
+// TEMPLATES
+//************************************************************************//
