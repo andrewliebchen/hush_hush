@@ -23,6 +23,7 @@ $max-width: 100%;
 $color-background: #333;
 $color-midground:  #555;
 $color-foreground: #F0F0F0;
+$color-fillometer: lighten($color-background, 5%);
 
 $small:  em(20);
 $medium: em(40);
@@ -44,13 +45,14 @@ body {
   background-color: $color-background;
   font-family: $font;
   font-size: 14px;
-  line-height: 20px;
+  line-height: em(20);
   color: $color-foreground;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   padding: 0;
   margin: 0;
 }
@@ -149,7 +151,14 @@ li {
   border-radius: $small / 2;
 }
 
+.thumbnail {
+  overflow: hidden;
 
+  img {
+    @include size(100% auto);
+    display: block;
+  }
+}
 
 //************************************************************************//
 // MODULES
@@ -179,32 +188,33 @@ header {
       float: none;
     }
   }
+}
 
-  ol {
-    margin-top: $gutter;
-    border: 1px solid $color-midground;
-    border-radius: 5px;
+.build-list {
+  margin-top: $gutter;
+  border: 1px solid $color-midground;
+  border-radius: 5px;
+  overflow: hidden;
 
-    li {
-      @include row();
-      height: $large;
-      line-height: $large;
-      border-top: 1px solid $color-midground;
-      padding: 0 em(20);
-    }
+  li {
+    @include row();
+    height: $large;
+    line-height: $large;
+    border-top: 1px solid $color-midground;
+    padding: 0 em(20);
+  }
 
-    li.header {
-      background-color: $color-midground;
-      border: 0;
-      color: lighten($color-midground, 40%);
-      height: $medium;
-      line-height: $medium;
-    }
+  .header {
+    background-color: $color-midground;
+    border: 0;
+    color: lighten($color-midground, 40%);
+    height: $medium;
+    line-height: $medium;
+  }
 
-    .avatar.small {
-      margin: em(20) em(10) 0 0;
-      float: left;
-    }
+  .avatar.small {
+    margin: em(20) em(10) 0 0;
+    float: left;
   }
 }
 
@@ -212,17 +222,70 @@ header {
   @include span-columns(9);
   @include omega;
   @include position(absolute, $large 0px 0px 0);
+  @include pad(0 em(20) em(20));
   border-left: 1px solid $color-midground;
   background-color: lighten($color-background, 3%);
 }
 
 .main-header {
-  @include pad(em(20) default);
+  @include pad(em(20) 0 0);
   color: $color-foreground;
   border: 0;
 }
 
+.test-list {
+  @include outer-container;
+  @include pad(default $gutter 0);
+
+  .test {
+    @include span-columns(3 of 9);
+    border-radius: 3px;
+    border: 1px solid $color-midground;
+    color: $color-midground;
+    cursor: pointer;
+    display: block;
+    margin-bottom: $gutter * 1.5;
+
+    &:hover {
+      background-color: $color-midground;
+      border-color: lighten($color-midground, 20%);
+      box-shadow: 0 0 0 5px darken($color-background, 3%);
+      color: white;
+    }
+
+    &:nth-child(3) {
+      @include omega;
+    }
+  }
+
+  .thumbnail {
+    height: em(250);
+    margin: $padding;
+  }
+
+  .test-title {
+    $size: em(50);
+    border: 0;
+    border-color: inherit;
+    border-style: inherit;
+    border-top-width: 1px;
+    font-family: $font-mono;
+    font-weight: normal;
+    height: $size;
+    line-height: $size;
+    padding: 0 $padding;
+  }
+}
+
 
 //************************************************************************//
-// TEMPLATES
+// STATES
 //************************************************************************//
+
+// Might need to invert this...dark color to right, so we can change fill color on hover
+@for $i from 1 through 100 {
+  [data-fillometer="#{$i}"] {
+    $perc: $i / 100;
+    @include background-image(linear-gradient(to right, $color-fillometer percentage($perc), transparent percentage($perc) ));
+  }
+}

@@ -223,12 +223,13 @@ body {
   background-color: #333333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 1.25em;
   color: #f0f0f0; }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   padding: 0;
   margin: 0; }
 
@@ -300,6 +301,13 @@ li {
   height: 1.25em;
   border-radius: 0.625em; }
 
+.thumbnail {
+  overflow: hidden; }
+  .thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block; }
+
 header {
   padding: 0.625em 2.35765%;
   border-bottom: 1px solid #555555;
@@ -337,31 +345,33 @@ header {
       box-flex: 1;
       display: block;
       float: none; }
-  .sidebar ol {
-    margin-top: 1.618em;
-    border: 1px solid #555555;
-    border-radius: 5px; }
-    .sidebar ol li {
-      *zoom: 1;
-      display: block;
-      height: 3.75em;
-      line-height: 3.75em;
-      border-top: 1px solid #555555;
-      padding: 0 1.25em; }
-      .sidebar ol li:before, .sidebar ol li:after {
-        content: " ";
-        display: table; }
-      .sidebar ol li:after {
-        clear: both; }
-    .sidebar ol li.header {
-      background-color: #555555;
-      border: 0;
-      color: #bbbbbb;
-      height: 2.5em;
-      line-height: 2.5em; }
-    .sidebar ol .avatar.small {
-      margin: 1.25em 0.625em 0 0;
-      float: left; }
+
+.build-list {
+  margin-top: 1.618em;
+  border: 1px solid #555555;
+  border-radius: 5px;
+  overflow: hidden; }
+  .build-list li {
+    *zoom: 1;
+    display: block;
+    height: 3.75em;
+    line-height: 3.75em;
+    border-top: 1px solid #555555;
+    padding: 0 1.25em; }
+    .build-list li:before, .build-list li:after {
+      content: " ";
+      display: table; }
+    .build-list li:after {
+      clear: both; }
+  .build-list .header {
+    background-color: #555555;
+    border: 0;
+    color: #bbbbbb;
+    height: 2.5em;
+    line-height: 2.5em; }
+  .build-list .avatar.small {
+    margin: 1.25em 0.625em 0 0;
+    float: left; }
 
 .main {
   display: block;
@@ -373,12 +383,458 @@ header {
   top: 3.75em;
   right: 0px;
   bottom: 0px;
+  padding: 0 1.25em 1.25em;
   border-left: 1px solid #555555;
   background-color: #3b3b3b; }
   .main:last-child {
     margin-right: 0; }
 
 .main-header {
-  padding: 1.25em 2.35765%;
+  padding: 1.25em 0 0;
   color: #f0f0f0;
   border: 0; }
+
+.test-list {
+  *zoom: 1;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.35765% 1.618em 0; }
+  .test-list:before, .test-list:after {
+    content: " ";
+    display: table; }
+  .test-list:after {
+    clear: both; }
+  .test-list .test {
+    display: block;
+    float: left;
+    margin-right: 3.16844%;
+    width: 31.22104%;
+    border-radius: 3px;
+    border: 1px solid #555555;
+    color: #555555;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 2.427em; }
+    .test-list .test:last-child {
+      margin-right: 0; }
+    .test-list .test:hover {
+      background-color: #555555;
+      border-color: #888888;
+      box-shadow: 0 0 0 5px #2b2b2b;
+      color: white; }
+    .test-list .test:nth-child(3) {
+      margin-right: 0; }
+  .test-list .thumbnail {
+    height: 15.625em;
+    margin: 0.625em; }
+  .test-list .test-title {
+    border: 0;
+    border-color: inherit;
+    border-style: inherit;
+    border-top-width: 1px;
+    font-family: source-code, "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    font-weight: normal;
+    height: 3.125em;
+    line-height: 3.125em;
+    padding: 0 0.625em; }
+
+[data-fillometer="1"] {
+  background-image: -webkit-linear-gradient(left, #404040 1%, transparent 1%);
+  background-image: linear-gradient(to right, #404040 1%, transparent 1%); }
+
+[data-fillometer="2"] {
+  background-image: -webkit-linear-gradient(left, #404040 2%, transparent 2%);
+  background-image: linear-gradient(to right, #404040 2%, transparent 2%); }
+
+[data-fillometer="3"] {
+  background-image: -webkit-linear-gradient(left, #404040 3%, transparent 3%);
+  background-image: linear-gradient(to right, #404040 3%, transparent 3%); }
+
+[data-fillometer="4"] {
+  background-image: -webkit-linear-gradient(left, #404040 4%, transparent 4%);
+  background-image: linear-gradient(to right, #404040 4%, transparent 4%); }
+
+[data-fillometer="5"] {
+  background-image: -webkit-linear-gradient(left, #404040 5%, transparent 5%);
+  background-image: linear-gradient(to right, #404040 5%, transparent 5%); }
+
+[data-fillometer="6"] {
+  background-image: -webkit-linear-gradient(left, #404040 6%, transparent 6%);
+  background-image: linear-gradient(to right, #404040 6%, transparent 6%); }
+
+[data-fillometer="7"] {
+  background-image: -webkit-linear-gradient(left, #404040 7.0%, transparent 7.0%);
+  background-image: linear-gradient(to right, #404040 7.0%, transparent 7.0%); }
+
+[data-fillometer="8"] {
+  background-image: -webkit-linear-gradient(left, #404040 8%, transparent 8%);
+  background-image: linear-gradient(to right, #404040 8%, transparent 8%); }
+
+[data-fillometer="9"] {
+  background-image: -webkit-linear-gradient(left, #404040 9%, transparent 9%);
+  background-image: linear-gradient(to right, #404040 9%, transparent 9%); }
+
+[data-fillometer="10"] {
+  background-image: -webkit-linear-gradient(left, #404040 10%, transparent 10%);
+  background-image: linear-gradient(to right, #404040 10%, transparent 10%); }
+
+[data-fillometer="11"] {
+  background-image: -webkit-linear-gradient(left, #404040 11%, transparent 11%);
+  background-image: linear-gradient(to right, #404040 11%, transparent 11%); }
+
+[data-fillometer="12"] {
+  background-image: -webkit-linear-gradient(left, #404040 12%, transparent 12%);
+  background-image: linear-gradient(to right, #404040 12%, transparent 12%); }
+
+[data-fillometer="13"] {
+  background-image: -webkit-linear-gradient(left, #404040 13%, transparent 13%);
+  background-image: linear-gradient(to right, #404040 13%, transparent 13%); }
+
+[data-fillometer="14"] {
+  background-image: -webkit-linear-gradient(left, #404040 14.0%, transparent 14.0%);
+  background-image: linear-gradient(to right, #404040 14.0%, transparent 14.0%); }
+
+[data-fillometer="15"] {
+  background-image: -webkit-linear-gradient(left, #404040 15%, transparent 15%);
+  background-image: linear-gradient(to right, #404040 15%, transparent 15%); }
+
+[data-fillometer="16"] {
+  background-image: -webkit-linear-gradient(left, #404040 16%, transparent 16%);
+  background-image: linear-gradient(to right, #404040 16%, transparent 16%); }
+
+[data-fillometer="17"] {
+  background-image: -webkit-linear-gradient(left, #404040 17%, transparent 17%);
+  background-image: linear-gradient(to right, #404040 17%, transparent 17%); }
+
+[data-fillometer="18"] {
+  background-image: -webkit-linear-gradient(left, #404040 18%, transparent 18%);
+  background-image: linear-gradient(to right, #404040 18%, transparent 18%); }
+
+[data-fillometer="19"] {
+  background-image: -webkit-linear-gradient(left, #404040 19%, transparent 19%);
+  background-image: linear-gradient(to right, #404040 19%, transparent 19%); }
+
+[data-fillometer="20"] {
+  background-image: -webkit-linear-gradient(left, #404040 20%, transparent 20%);
+  background-image: linear-gradient(to right, #404040 20%, transparent 20%); }
+
+[data-fillometer="21"] {
+  background-image: -webkit-linear-gradient(left, #404040 21%, transparent 21%);
+  background-image: linear-gradient(to right, #404040 21%, transparent 21%); }
+
+[data-fillometer="22"] {
+  background-image: -webkit-linear-gradient(left, #404040 22%, transparent 22%);
+  background-image: linear-gradient(to right, #404040 22%, transparent 22%); }
+
+[data-fillometer="23"] {
+  background-image: -webkit-linear-gradient(left, #404040 23%, transparent 23%);
+  background-image: linear-gradient(to right, #404040 23%, transparent 23%); }
+
+[data-fillometer="24"] {
+  background-image: -webkit-linear-gradient(left, #404040 24%, transparent 24%);
+  background-image: linear-gradient(to right, #404040 24%, transparent 24%); }
+
+[data-fillometer="25"] {
+  background-image: -webkit-linear-gradient(left, #404040 25%, transparent 25%);
+  background-image: linear-gradient(to right, #404040 25%, transparent 25%); }
+
+[data-fillometer="26"] {
+  background-image: -webkit-linear-gradient(left, #404040 26%, transparent 26%);
+  background-image: linear-gradient(to right, #404040 26%, transparent 26%); }
+
+[data-fillometer="27"] {
+  background-image: -webkit-linear-gradient(left, #404040 27%, transparent 27%);
+  background-image: linear-gradient(to right, #404040 27%, transparent 27%); }
+
+[data-fillometer="28"] {
+  background-image: -webkit-linear-gradient(left, #404040 28.0%, transparent 28.0%);
+  background-image: linear-gradient(to right, #404040 28.0%, transparent 28.0%); }
+
+[data-fillometer="29"] {
+  background-image: -webkit-linear-gradient(left, #404040 29.0%, transparent 29.0%);
+  background-image: linear-gradient(to right, #404040 29.0%, transparent 29.0%); }
+
+[data-fillometer="30"] {
+  background-image: -webkit-linear-gradient(left, #404040 30%, transparent 30%);
+  background-image: linear-gradient(to right, #404040 30%, transparent 30%); }
+
+[data-fillometer="31"] {
+  background-image: -webkit-linear-gradient(left, #404040 31%, transparent 31%);
+  background-image: linear-gradient(to right, #404040 31%, transparent 31%); }
+
+[data-fillometer="32"] {
+  background-image: -webkit-linear-gradient(left, #404040 32%, transparent 32%);
+  background-image: linear-gradient(to right, #404040 32%, transparent 32%); }
+
+[data-fillometer="33"] {
+  background-image: -webkit-linear-gradient(left, #404040 33%, transparent 33%);
+  background-image: linear-gradient(to right, #404040 33%, transparent 33%); }
+
+[data-fillometer="34"] {
+  background-image: -webkit-linear-gradient(left, #404040 34%, transparent 34%);
+  background-image: linear-gradient(to right, #404040 34%, transparent 34%); }
+
+[data-fillometer="35"] {
+  background-image: -webkit-linear-gradient(left, #404040 35%, transparent 35%);
+  background-image: linear-gradient(to right, #404040 35%, transparent 35%); }
+
+[data-fillometer="36"] {
+  background-image: -webkit-linear-gradient(left, #404040 36%, transparent 36%);
+  background-image: linear-gradient(to right, #404040 36%, transparent 36%); }
+
+[data-fillometer="37"] {
+  background-image: -webkit-linear-gradient(left, #404040 37%, transparent 37%);
+  background-image: linear-gradient(to right, #404040 37%, transparent 37%); }
+
+[data-fillometer="38"] {
+  background-image: -webkit-linear-gradient(left, #404040 38%, transparent 38%);
+  background-image: linear-gradient(to right, #404040 38%, transparent 38%); }
+
+[data-fillometer="39"] {
+  background-image: -webkit-linear-gradient(left, #404040 39%, transparent 39%);
+  background-image: linear-gradient(to right, #404040 39%, transparent 39%); }
+
+[data-fillometer="40"] {
+  background-image: -webkit-linear-gradient(left, #404040 40%, transparent 40%);
+  background-image: linear-gradient(to right, #404040 40%, transparent 40%); }
+
+[data-fillometer="41"] {
+  background-image: -webkit-linear-gradient(left, #404040 41%, transparent 41%);
+  background-image: linear-gradient(to right, #404040 41%, transparent 41%); }
+
+[data-fillometer="42"] {
+  background-image: -webkit-linear-gradient(left, #404040 42%, transparent 42%);
+  background-image: linear-gradient(to right, #404040 42%, transparent 42%); }
+
+[data-fillometer="43"] {
+  background-image: -webkit-linear-gradient(left, #404040 43%, transparent 43%);
+  background-image: linear-gradient(to right, #404040 43%, transparent 43%); }
+
+[data-fillometer="44"] {
+  background-image: -webkit-linear-gradient(left, #404040 44%, transparent 44%);
+  background-image: linear-gradient(to right, #404040 44%, transparent 44%); }
+
+[data-fillometer="45"] {
+  background-image: -webkit-linear-gradient(left, #404040 45%, transparent 45%);
+  background-image: linear-gradient(to right, #404040 45%, transparent 45%); }
+
+[data-fillometer="46"] {
+  background-image: -webkit-linear-gradient(left, #404040 46%, transparent 46%);
+  background-image: linear-gradient(to right, #404040 46%, transparent 46%); }
+
+[data-fillometer="47"] {
+  background-image: -webkit-linear-gradient(left, #404040 47%, transparent 47%);
+  background-image: linear-gradient(to right, #404040 47%, transparent 47%); }
+
+[data-fillometer="48"] {
+  background-image: -webkit-linear-gradient(left, #404040 48%, transparent 48%);
+  background-image: linear-gradient(to right, #404040 48%, transparent 48%); }
+
+[data-fillometer="49"] {
+  background-image: -webkit-linear-gradient(left, #404040 49%, transparent 49%);
+  background-image: linear-gradient(to right, #404040 49%, transparent 49%); }
+
+[data-fillometer="50"] {
+  background-image: -webkit-linear-gradient(left, #404040 50%, transparent 50%);
+  background-image: linear-gradient(to right, #404040 50%, transparent 50%); }
+
+[data-fillometer="51"] {
+  background-image: -webkit-linear-gradient(left, #404040 51%, transparent 51%);
+  background-image: linear-gradient(to right, #404040 51%, transparent 51%); }
+
+[data-fillometer="52"] {
+  background-image: -webkit-linear-gradient(left, #404040 52%, transparent 52%);
+  background-image: linear-gradient(to right, #404040 52%, transparent 52%); }
+
+[data-fillometer="53"] {
+  background-image: -webkit-linear-gradient(left, #404040 53%, transparent 53%);
+  background-image: linear-gradient(to right, #404040 53%, transparent 53%); }
+
+[data-fillometer="54"] {
+  background-image: -webkit-linear-gradient(left, #404040 54%, transparent 54%);
+  background-image: linear-gradient(to right, #404040 54%, transparent 54%); }
+
+[data-fillometer="55"] {
+  background-image: -webkit-linear-gradient(left, #404040 55.0%, transparent 55.0%);
+  background-image: linear-gradient(to right, #404040 55.0%, transparent 55.0%); }
+
+[data-fillometer="56"] {
+  background-image: -webkit-linear-gradient(left, #404040 56.0%, transparent 56.0%);
+  background-image: linear-gradient(to right, #404040 56.0%, transparent 56.0%); }
+
+[data-fillometer="57"] {
+  background-image: -webkit-linear-gradient(left, #404040 57.0%, transparent 57.0%);
+  background-image: linear-gradient(to right, #404040 57.0%, transparent 57.0%); }
+
+[data-fillometer="58"] {
+  background-image: -webkit-linear-gradient(left, #404040 58.0%, transparent 58.0%);
+  background-image: linear-gradient(to right, #404040 58.0%, transparent 58.0%); }
+
+[data-fillometer="59"] {
+  background-image: -webkit-linear-gradient(left, #404040 59%, transparent 59%);
+  background-image: linear-gradient(to right, #404040 59%, transparent 59%); }
+
+[data-fillometer="60"] {
+  background-image: -webkit-linear-gradient(left, #404040 60%, transparent 60%);
+  background-image: linear-gradient(to right, #404040 60%, transparent 60%); }
+
+[data-fillometer="61"] {
+  background-image: -webkit-linear-gradient(left, #404040 61%, transparent 61%);
+  background-image: linear-gradient(to right, #404040 61%, transparent 61%); }
+
+[data-fillometer="62"] {
+  background-image: -webkit-linear-gradient(left, #404040 62%, transparent 62%);
+  background-image: linear-gradient(to right, #404040 62%, transparent 62%); }
+
+[data-fillometer="63"] {
+  background-image: -webkit-linear-gradient(left, #404040 63%, transparent 63%);
+  background-image: linear-gradient(to right, #404040 63%, transparent 63%); }
+
+[data-fillometer="64"] {
+  background-image: -webkit-linear-gradient(left, #404040 64%, transparent 64%);
+  background-image: linear-gradient(to right, #404040 64%, transparent 64%); }
+
+[data-fillometer="65"] {
+  background-image: -webkit-linear-gradient(left, #404040 65%, transparent 65%);
+  background-image: linear-gradient(to right, #404040 65%, transparent 65%); }
+
+[data-fillometer="66"] {
+  background-image: -webkit-linear-gradient(left, #404040 66%, transparent 66%);
+  background-image: linear-gradient(to right, #404040 66%, transparent 66%); }
+
+[data-fillometer="67"] {
+  background-image: -webkit-linear-gradient(left, #404040 67%, transparent 67%);
+  background-image: linear-gradient(to right, #404040 67%, transparent 67%); }
+
+[data-fillometer="68"] {
+  background-image: -webkit-linear-gradient(left, #404040 68%, transparent 68%);
+  background-image: linear-gradient(to right, #404040 68%, transparent 68%); }
+
+[data-fillometer="69"] {
+  background-image: -webkit-linear-gradient(left, #404040 69%, transparent 69%);
+  background-image: linear-gradient(to right, #404040 69%, transparent 69%); }
+
+[data-fillometer="70"] {
+  background-image: -webkit-linear-gradient(left, #404040 70%, transparent 70%);
+  background-image: linear-gradient(to right, #404040 70%, transparent 70%); }
+
+[data-fillometer="71"] {
+  background-image: -webkit-linear-gradient(left, #404040 71%, transparent 71%);
+  background-image: linear-gradient(to right, #404040 71%, transparent 71%); }
+
+[data-fillometer="72"] {
+  background-image: -webkit-linear-gradient(left, #404040 72%, transparent 72%);
+  background-image: linear-gradient(to right, #404040 72%, transparent 72%); }
+
+[data-fillometer="73"] {
+  background-image: -webkit-linear-gradient(left, #404040 73%, transparent 73%);
+  background-image: linear-gradient(to right, #404040 73%, transparent 73%); }
+
+[data-fillometer="74"] {
+  background-image: -webkit-linear-gradient(left, #404040 74%, transparent 74%);
+  background-image: linear-gradient(to right, #404040 74%, transparent 74%); }
+
+[data-fillometer="75"] {
+  background-image: -webkit-linear-gradient(left, #404040 75%, transparent 75%);
+  background-image: linear-gradient(to right, #404040 75%, transparent 75%); }
+
+[data-fillometer="76"] {
+  background-image: -webkit-linear-gradient(left, #404040 76%, transparent 76%);
+  background-image: linear-gradient(to right, #404040 76%, transparent 76%); }
+
+[data-fillometer="77"] {
+  background-image: -webkit-linear-gradient(left, #404040 77%, transparent 77%);
+  background-image: linear-gradient(to right, #404040 77%, transparent 77%); }
+
+[data-fillometer="78"] {
+  background-image: -webkit-linear-gradient(left, #404040 78%, transparent 78%);
+  background-image: linear-gradient(to right, #404040 78%, transparent 78%); }
+
+[data-fillometer="79"] {
+  background-image: -webkit-linear-gradient(left, #404040 79%, transparent 79%);
+  background-image: linear-gradient(to right, #404040 79%, transparent 79%); }
+
+[data-fillometer="80"] {
+  background-image: -webkit-linear-gradient(left, #404040 80%, transparent 80%);
+  background-image: linear-gradient(to right, #404040 80%, transparent 80%); }
+
+[data-fillometer="81"] {
+  background-image: -webkit-linear-gradient(left, #404040 81%, transparent 81%);
+  background-image: linear-gradient(to right, #404040 81%, transparent 81%); }
+
+[data-fillometer="82"] {
+  background-image: -webkit-linear-gradient(left, #404040 82%, transparent 82%);
+  background-image: linear-gradient(to right, #404040 82%, transparent 82%); }
+
+[data-fillometer="83"] {
+  background-image: -webkit-linear-gradient(left, #404040 83%, transparent 83%);
+  background-image: linear-gradient(to right, #404040 83%, transparent 83%); }
+
+[data-fillometer="84"] {
+  background-image: -webkit-linear-gradient(left, #404040 84%, transparent 84%);
+  background-image: linear-gradient(to right, #404040 84%, transparent 84%); }
+
+[data-fillometer="85"] {
+  background-image: -webkit-linear-gradient(left, #404040 85%, transparent 85%);
+  background-image: linear-gradient(to right, #404040 85%, transparent 85%); }
+
+[data-fillometer="86"] {
+  background-image: -webkit-linear-gradient(left, #404040 86%, transparent 86%);
+  background-image: linear-gradient(to right, #404040 86%, transparent 86%); }
+
+[data-fillometer="87"] {
+  background-image: -webkit-linear-gradient(left, #404040 87%, transparent 87%);
+  background-image: linear-gradient(to right, #404040 87%, transparent 87%); }
+
+[data-fillometer="88"] {
+  background-image: -webkit-linear-gradient(left, #404040 88%, transparent 88%);
+  background-image: linear-gradient(to right, #404040 88%, transparent 88%); }
+
+[data-fillometer="89"] {
+  background-image: -webkit-linear-gradient(left, #404040 89%, transparent 89%);
+  background-image: linear-gradient(to right, #404040 89%, transparent 89%); }
+
+[data-fillometer="90"] {
+  background-image: -webkit-linear-gradient(left, #404040 90%, transparent 90%);
+  background-image: linear-gradient(to right, #404040 90%, transparent 90%); }
+
+[data-fillometer="91"] {
+  background-image: -webkit-linear-gradient(left, #404040 91%, transparent 91%);
+  background-image: linear-gradient(to right, #404040 91%, transparent 91%); }
+
+[data-fillometer="92"] {
+  background-image: -webkit-linear-gradient(left, #404040 92%, transparent 92%);
+  background-image: linear-gradient(to right, #404040 92%, transparent 92%); }
+
+[data-fillometer="93"] {
+  background-image: -webkit-linear-gradient(left, #404040 93%, transparent 93%);
+  background-image: linear-gradient(to right, #404040 93%, transparent 93%); }
+
+[data-fillometer="94"] {
+  background-image: -webkit-linear-gradient(left, #404040 94%, transparent 94%);
+  background-image: linear-gradient(to right, #404040 94%, transparent 94%); }
+
+[data-fillometer="95"] {
+  background-image: -webkit-linear-gradient(left, #404040 95%, transparent 95%);
+  background-image: linear-gradient(to right, #404040 95%, transparent 95%); }
+
+[data-fillometer="96"] {
+  background-image: -webkit-linear-gradient(left, #404040 96%, transparent 96%);
+  background-image: linear-gradient(to right, #404040 96%, transparent 96%); }
+
+[data-fillometer="97"] {
+  background-image: -webkit-linear-gradient(left, #404040 97%, transparent 97%);
+  background-image: linear-gradient(to right, #404040 97%, transparent 97%); }
+
+[data-fillometer="98"] {
+  background-image: -webkit-linear-gradient(left, #404040 98%, transparent 98%);
+  background-image: linear-gradient(to right, #404040 98%, transparent 98%); }
+
+[data-fillometer="99"] {
+  background-image: -webkit-linear-gradient(left, #404040 99%, transparent 99%);
+  background-image: linear-gradient(to right, #404040 99%, transparent 99%); }
+
+[data-fillometer="100"] {
+  background-image: -webkit-linear-gradient(left, #404040 100%, transparent 100%);
+  background-image: linear-gradient(to right, #404040 100%, transparent 100%); }
