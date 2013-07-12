@@ -303,6 +303,10 @@ header {
       border-color: lighten($color-midground, 20%);
       box-shadow: 0 0 0 5px darken($color-background, 3%);
       color: white;
+
+      [data-fillometer] {
+        @extend [data-fillometer]:hover;
+      }
     }
 
     &:nth-child(3) {

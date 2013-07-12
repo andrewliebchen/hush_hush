@@ -288,7 +288,7 @@ li {
 
 [data-fillometer] {
   background-color: #404040; }
-  [data-fillometer]:hover {
+  [data-fillometer]:hover, .test-list .test:hover [data-fillometer] {
     background-color: #fb6f6f; }
 
 .avatar {
