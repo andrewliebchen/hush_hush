@@ -24,6 +24,7 @@ $color-background: #333;
 $color-midground:  #555;
 $color-foreground: #F0F0F0;
 $color-fillometer: lighten($color-background, 5%);
+$status-bad:       rgb(251, 111, 111);
 
 $small:  em(20);
 $medium: em(40);
@@ -130,6 +131,14 @@ li {
   padding-right: 5px;
 }
 
+[data-fillometer] {
+  background-color: $color-fillometer;
+
+  &:hover {
+    background-color: $status-bad;
+  }
+}
+
 //************************************************************************//
 // COMPONENTS
 //************************************************************************//
@@ -157,6 +166,35 @@ li {
   img {
     @include size(100% auto);
     display: block;
+  }
+}
+
+.dropdown-toggle {
+  border-radius: 5px;
+  border: 1px solid $color-midground;
+  color: darken($color-foreground, 20%);
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+
+  b {
+    color: $color-foreground;
+  }
+
+  .icon {
+    @include size(em(30));
+    border-left: 2px solid $color-midground;
+    color: inherit;
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+
+  &:hover {
+    background-color: $color-midground;
+
+    .icon {
+      border-color: $color-background;
+    }
   }
 }
 
@@ -233,6 +271,20 @@ header {
   border: 0;
 }
 
+.main-title {
+  .icon {
+    margin-right: 10px;
+  }
+
+  .commit-message {
+    color: darken($color-foreground, 20%);
+    font-family: $font-mono;
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 20px;
+  }
+}
+
 .test-list {
   @include outer-container;
   @include pad(default $gutter 0);
@@ -282,10 +334,9 @@ header {
 // STATES
 //************************************************************************//
 
-// Might need to invert this...dark color to right, so we can change fill color on hover
 @for $i from 1 through 100 {
   [data-fillometer="#{$i}"] {
-    $perc: $i / 100;
-    @include background-image(linear-gradient(to right, $color-fillometer percentage($perc), transparent percentage($perc) ));
+    $perc: (100 - $i) / 100;
+    @include background-image(linear-gradient(to left, $color-background percentage($perc), transparent percentage($perc) ));
   }
 }
