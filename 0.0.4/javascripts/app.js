@@ -15,4 +15,9 @@ $(function(){
       $('#branch_view').css('opacity', opacityValue);
     }
   });
+
+  // Tools
+  $('.tool').click(function(){
+    $(this).toggleClass('is-selected');
+  });
 });

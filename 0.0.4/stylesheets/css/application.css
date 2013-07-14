@@ -221,10 +221,10 @@ table {
 html,
 body {
   background-color: #333333;
+  color: #f0f0f0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.25em;
-  color: #f0f0f0; }
+  line-height: 1.25em; }
 
 h1,
 h2,
@@ -281,7 +281,7 @@ li {
   .button-group .button:only-child {
     border-radius: 5px; }
 
-.icon {
+.icon, .logo {
   font-family: batch-icons;
   font-weight: normal;
   padding-right: 5px; }
@@ -289,13 +289,44 @@ li {
 [data-fillometer] {
   background-color: #404040; }
   [data-fillometer]:hover, .test-list .test:hover [data-fillometer] {
-    background-color: #fb6f6f; }
+    background-color: #fb6f6f !important; }
+
+.logo {
+  float: left;
+  text-align: center; }
+
+.block, .logo, .avatar, .dropdown, .view-controls {
+  width: 3.75em;
+  height: 3.75em;
+  border-color: #555555;
+  border-right: 1px solid #555555;
+  color: #f0f0f0;
+  cursor: pointer;
+  display: block;
+  float: left;
+  line-height: 2.5em;
+  padding: 0.625em;
+  position: relative; }
+  .block .icon, .logo .icon, .avatar .icon, .dropdown .icon, .view-controls .icon, .block .logo, .logo .logo, .avatar .logo, .dropdown .logo, .view-controls .logo {
+    color: inherit;
+    display: block;
+    font-size: 1.25em;
+    padding: 0;
+    text-align: center; }
+  .block:hover, .logo:hover, .avatar:hover, .dropdown:hover, .view-controls:hover {
+    background-color: black; }
+  .block.is-selected, .is-selected.logo, .is-selected.avatar, .is-selected.dropdown, .is-selected.view-controls {
+    background-color: #555555;
+    border-color: #333333;
+    color: #f0f0f0; }
+    .block.is-selected:hover, .is-selected.logo:hover, .is-selected.avatar:hover, .is-selected.dropdown:hover, .is-selected.view-controls:hover {
+      background-color: #626262; }
 
 .avatar {
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 1.25em;
-  overflow: hidden; }
+  border: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative; }
   .avatar img {
     display: block;
     height: auto;
@@ -322,7 +353,7 @@ li {
   padding: 0 10px; }
   .dropdown-toggle b {
     color: #f0f0f0; }
-  .dropdown-toggle .icon {
+  .dropdown-toggle .icon, .dropdown-toggle .logo {
     width: 1.875em;
     height: 1.875em;
     border-left: 2px solid #555555;
@@ -331,15 +362,92 @@ li {
     padding-left: 10px; }
   .dropdown-toggle:hover {
     background-color: #555555; }
-    .dropdown-toggle:hover .icon {
+    .dropdown-toggle:hover .icon, .dropdown-toggle:hover .logo {
       border-color: #333333; }
 
+.dropdown {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  margin-right: 0;
+  color: #555555;
+  cursor: pointer;
+  line-height: 1.25em;
+  padding-left: 1.25em;
+  position: relative; }
+  .dropdown:last-child {
+    margin-right: 0; }
+  .dropdown .icon, .dropdown .logo {
+    position: absolute;
+    top: 50%;
+    right: 0.625em;
+    bottom: 0px;
+    width: 20px;
+    height: 20px;
+    color: inherit;
+    font-size: 1.5em;
+    margin-top: -10px;
+    padding-top: 2px; }
+  .dropdown:hover {
+    background-color: black;
+    color: #f0f0f0; }
+
+.view-controls {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1; }
+  .view-controls:hover {
+    background-color: transparent; }
+
+.slider {
+  position: relative;
+  height: 100%; }
+  .slider .ui-slider-handle {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    width: 24px;
+    height: 24px;
+    background-color: #555555;
+    border-radius: 12px;
+    border: 5px solid #333333;
+    cursor: pointer;
+    margin-top: -10px;
+    outline: none;
+    z-index: 1; }
+    .slider .ui-slider-handle::before {
+      top: 31px; }
+    .slider .ui-slider-handle:hover, .slider .ui-slider-handle:active {
+      background-color: #f0f0f0; }
+  .slider .ui-slider-track {
+    position: relative;
+    top: 50%;
+    background-color: #555555;
+    height: 4px;
+    margin-top: -2px; }
+
 header {
-  padding: 0.625em 2.35765%;
   border-bottom: 1px solid #555555;
   color: #555555;
   height: 3.75em;
   line-height: 2.5em; }
+
+.global-header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start; }
+  .global-header [data-fillometer] {
+    border-bottom: 1px solid #555555; }
 
 .sidebar {
   display: block;
@@ -420,7 +528,7 @@ header {
   color: #f0f0f0;
   border: 0; }
 
-.main-title .icon {
+.main-title .icon, .main-title .logo {
   margin-right: 10px; }
 .main-title .commit-message {
   color: #bdbdbd;

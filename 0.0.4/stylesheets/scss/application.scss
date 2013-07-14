@@ -44,10 +44,10 @@ $font-icon: batch-icons;
 html,
 body {
   background-color: $color-background;
+  color: $color-foreground;
   font-family: $font;
   font-size: 14px;
   line-height: em(20);
-  color: $color-foreground;
 }
 
 h1,
@@ -135,18 +135,62 @@ li {
   background-color: $color-fillometer;
 
   &:hover {
-    background-color: $status-bad;
+    background-color: $status-bad !important;
   }
+}
+
+.logo {
+  @extend .block;
+  @extend .icon;
+  float: left;
+  text-align: center;
 }
 
 //************************************************************************//
 // COMPONENTS
 //************************************************************************//
 
+.block {
+  @include size($large);
+  border-color: $color-midground;
+  border-right: 1px solid $color-midground;
+  color: $color-foreground;
+  cursor: pointer;
+  display: block;
+  float: left;
+  line-height: $medium;
+  padding: em(10);
+  position: relative;
+
+  .icon {
+    color: inherit;
+    display: block;
+    font-size: em(20);
+    padding: 0;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: black;
+  }
+
+  &.is-selected {
+    background-color: $color-midground;
+    border-color: $color-background;
+    color: $color-foreground;
+
+    &:hover {
+      background-color: lighten($color-midground, 5%);
+    }
+  }
+}
+
 .avatar {
-  @include size($medium);
-  border-radius: $medium / 2;
+  @extend .block;
+  border: 0;
   overflow: hidden;
+  padding: 0;
+  position: relative;
 
   img {
     display: block;
@@ -198,16 +242,96 @@ li {
   }
 }
 
+.dropdown {
+  @extend .block;
+  @include span-columns(3);
+  @include omega;
+  color: $color-midground;
+  cursor: pointer;
+  line-height: $small;
+  padding-left: em(20);
+  position: relative;
+
+  .icon {
+    $size: 20px;
+    @include position(absolute, 50% em(10) 0px 0);
+    @include size($size);
+    color: inherit;
+    font-size: em(24);
+    margin-top: -($size / 2);
+    padding-top: 2px;
+  }
+
+  &:hover {
+    background-color: black;
+    color: $color-foreground;
+  }
+}
+
+.view-controls {
+  @extend .block;
+  @include box-flex(1);
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.slider {
+  position: relative;
+  height: 100%;
+
+  .ui-slider-handle {
+    $size: 24px;
+    @include position(absolute, 50% 25% 0 0);
+    @include size($size);
+    background-color: $color-midground;
+    border-radius: $size / 2;
+    border: 5px solid $color-background;
+    cursor: pointer;
+    margin-top: -($size / 2) + 2px;
+    outline: none;
+    z-index: 1;
+
+    &::before {
+      top: 31px;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $color-foreground;
+    }
+  }
+
+  .ui-slider-track {
+    $height: 4px;
+    @include position(relative, 50% 0 0 0);
+    background-color: $color-midground;
+    height: $height;
+    margin-top: -($height / 2);
+  }
+}
+
 //************************************************************************//
 // MODULES
 //************************************************************************//
 
 header {
-  @include pad($padding default);
   border-bottom: 1px solid $color-midground;
   color: $color-midground;
   height: $large;
   line-height: $medium;
+}
+
+.global-header {
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+
+  [data-fillometer] {
+    border-bottom: 1px solid $color-midground;
+  }
 }
 
 .sidebar {
