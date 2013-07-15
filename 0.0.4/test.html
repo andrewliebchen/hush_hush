@@ -14,32 +14,84 @@
 <body class="page-test">
   <header class="global-header">
     <a href="index.html" class="logo">&#xF147;</a>
-    <div class="dropdown" data-fillometer="33">
-      <h3>topic-branch-name</h3>
-      <small><strong>July 13</strong> 8:55pm</small>
-      <span class="icon">&#xF0AA;</span>
+    <div class="chooser">
+      <div class="chooser-toggle" data-toggle="chooser" data-fillometer="55">
+        <h3>topic-branch-name</h3>
+        <small><strong>July 13</strong> 8:55pm</small>
+        <span class="icon"></span>
+      </div>
+
+      <ul class="chooser-menu">
+        <li data-fillometer="50">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="45">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="35">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="30">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+      </ul>
     </div>
-    <div class="dropdown" data-fillometer="75">
-      <h3>feature/test-name.rb</h3>
-      <small>"As a dude I want to catch waves"</small>
-      <span class="icon">&#xF0AA;</span>
+    <div class="chooser">
+      <div class="chooser-toggle" data-toggle="chooser" data-fillometer="75">
+        <h3>feature/test-name.rb</h3>
+        <small>"As a dude I want to catch waves"</small>
+        <span class="icon" data-toggle="chooser"></span>
+      </div>
+
+      <ul class="chooser-menu">
+        <li data-fillometer="50">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="45">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="35">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="30">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+      </ul>
     </div>
     <div class="view-controls">
       <div id="preview_slider" class="slider">
         <div class="ui-slider-track"></div>
       </div>
     </div>
-    <div class="block tool"><span class="icon">&#xF020;</span></div>
-    <div class="block tool"><span class="icon">&#xF128;</span></div>
-    <div class="block tool"><span class="icon">&#xF004;</span></div>
-    <div class="block tool"><span class="icon">&#xF061;</span></div>
+    <div class="block tool" data-toggle="marquee"><span class="icon">&#xF020;</span></div>
+    <div class="block tool" data-toggle="rulers"><span class="icon">&#xF128;</span></div>
+    <div class="block tool" data-toggle-pane="conversations"><span class="icon">&#xF004;</span></div>
+    <div class="block tool" data-toggle-pane="code"><span class="icon">&#xF061;</span></div>
     <div class="avatar right">
       <img src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/150/crops/350_2x.jpg">
     </div>
   </header>
 
-  <section class="preview">
+  <section class="pane-container" data-resizeable="pane">
+    <div id="conversations" class="pane">
+      Conversations
+    </div>
+    <div id="code" class="pane">
+      Code
+    </div>
+  </section>
 
+  <section id="preview" class="preview">
+    <iframe src="https://en.wikipedia.org" id="master_view"></iframe>
+    <iframe src="https://es.wikipedia.org" id="branch_view" style="opacity: 0.5"></iframe>
   </section>
 </body>
 </html>

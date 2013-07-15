@@ -16,8 +16,21 @@ $(function(){
     }
   });
 
-  // Tools
-  $('.tool').click(function(){
+  // Select tools
+  $('[data-toggle]').click(function(){
     $(this).toggleClass('is-selected');
+  });
+
+  // Toggle conversation pane
+  $('[data-toggle-pane]').click(function(){
+    var paneId = $(this).data('toggle-pane');
+    $('.pane.is-active').removeClass('is-active');
+    $('#' + paneId).addClass('is-active');
+    $('[data-toggle-pane].is-selected').removeClass('is-selected');
+    $(this).toggleClass('is-selected');
+
+    if(!$('body').hasClass('pane-open')) {
+      $('body').toggleClass('pane-open');
+    }
   });
 });

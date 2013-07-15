@@ -31,6 +31,7 @@ $medium: em(40);
 $large:  em(60);
 
 $padding: em(10);
+$pane-width: 25%;
 
 $font: $helvetica;
 $font-mono: source-code, $monospace;
@@ -48,6 +49,7 @@ body {
   font-family: $font;
   font-size: 14px;
   line-height: em(20);
+  height: 100%;
 }
 
 h1,
@@ -183,6 +185,22 @@ li {
       background-color: lighten($color-midground, 5%);
     }
   }
+
+  &[data-toggle-pane].is-selected {
+    &::before {
+      $size: 10px;
+      @include position(absolute, 0 0 0px 50%);
+      @include transform(rotate(45deg));
+      background-color: $color-background;
+      border-bottom: 0;
+      border-right: 0;
+      content: "";
+      height: $size;
+      margin-left: -($size / 2) - 1px;
+      margin-bottom: -($size / 2);
+      width: $size;
+    }
+  }
 }
 
 .avatar {
@@ -242,15 +260,21 @@ li {
   }
 }
 
-.dropdown {
-  @extend .block;
+.chooser {
   @include span-columns(3);
   @include omega;
+  border-bottom: 1px solid $color-midground;
+  border-right: 1px solid $color-midground;
   color: $color-midground;
-  cursor: pointer;
   line-height: $small;
-  padding-left: em(20);
+  padding: 0;
   position: relative;
+}
+
+.chooser-toggle {
+  cursor: pointer;
+  height: $large - em(1);
+  padding: $padding em(50) $padding $padding*2;
 
   .icon {
     $size: 20px;
@@ -260,17 +284,50 @@ li {
     font-size: em(24);
     margin-top: -($size / 2);
     padding-top: 2px;
+
+    &::after {
+      content: "\F0A7";
+    }
   }
 
-  &:hover {
-    background-color: black;
+  &:hover,
+  &.is-selected {
     color: $color-foreground;
+  }
+
+  &.is-selected {
+    .icon::after {
+      content: "\F0A8";
+    }
+
+    + .chooser-menu {
+      display: block;
+      color: inherit;
+    }
+  }
+}
+
+.chooser-menu {
+  @include position(absolute, $large 0px 0 -1px);
+  background-color: $color-background;
+  display: none;
+
+  li {
+    height: $large;
+    padding: $padding em(50) $padding $padding*2;
+    color: inherit;
+    border: 0;
+
+    &:hover {
+      color: $color-foreground;
+    }
   }
 }
 
 .view-controls {
   @extend .block;
   @include box-flex(1);
+  overflow: hidden;
 
   &:hover {
     background-color: transparent;
@@ -294,7 +351,17 @@ li {
     z-index: 1;
 
     &::before {
-      top: 31px;
+      $size: 10px;
+      @include position(absolute, 28px 0 0 50%);
+      @include transform(rotate(45deg));
+      background-color: $color-foreground;
+      border-bottom: 0;
+      border-right: 0;
+      border: 1px solid $color-foreground;
+      content: "";
+      height: $size;
+      margin-left: -($size / 2) - 1px;
+      width: $size;
     }
 
     &:hover,
@@ -309,6 +376,19 @@ li {
     background-color: $color-midground;
     height: $height;
     margin-top: -($height / 2);
+  }
+}
+
+.preview {
+  // @include transition;
+  @include position(relative, 0px 0px 0px 0px);
+  @include size(100%);
+  z-index: 1;
+
+  iframe {
+    @include position(absolute, 0px 0px 0px 0px);
+    @include size(100%);
+    border: 0;
   }
 }
 
@@ -328,10 +408,8 @@ header {
   @include box-align(start);
   @include box-orient(horizontal);
   @include box-pack(start);
-
-  [data-fillometer] {
-    border-bottom: 1px solid $color-midground;
-  }
+  position: relative;
+  z-index: 11;
 }
 
 .sidebar {
@@ -457,10 +535,48 @@ header {
   }
 }
 
+.pane-container {
+  // @include transition;
+  @include position(absolute, $large 0px 0px 0);
+  @include pad(default);
+  background-color: $color-background;
+  width: $pane-width;
+  right: -$pane-width;
+
+  .pane-resizer {
+    @include position(absolute, 0px 0 0px 0px);
+    width: 10px;
+    cursor: col-resize;
+  }
+
+  .pane {
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .ui-resizable-handle {
+    @include position(absolute, 0px 0 0px 0px);
+    width: 10px;
+    cursor: col-resize;
+  }
+}
 
 //************************************************************************//
 // STATES
 //************************************************************************//
+
+body.pane-open {
+  .preview {
+    width: 100% - $pane-width;
+  }
+
+  .pane-container {
+    right: 0;
+  }
+}
 
 @for $i from 1 through 100 {
   [data-fillometer="#{$i}"] {
