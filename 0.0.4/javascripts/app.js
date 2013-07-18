@@ -21,9 +21,16 @@ $(function(){
     $(this).toggleClass('is-selected');
   });
 
+  $('[data-hover-toggle]').hover(function(){
+    $(this).addClass('is-selected');
+  }, function(){
+    $(this).removeClass('is-selected');
+  });
+
   // Toggle conversation pane
   $('[data-toggle-pane]').click(function(){
     var paneId = $(this).data('toggle-pane');
+    
     $('.pane.is-active').removeClass('is-active');
     $('#' + paneId).addClass('is-active');
     $('[data-toggle-pane].is-selected').removeClass('is-selected');

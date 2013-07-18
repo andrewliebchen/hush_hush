@@ -397,6 +397,9 @@ li {
   position: relative; }
   .chooser:last-child {
     margin-right: 0; }
+  .chooser.is-selected .chooser-menu {
+    display: block;
+    color: inherit; }
 
 .chooser-toggle {
   cursor: pointer;
@@ -413,30 +416,27 @@ li {
     font-size: 1.5em;
     margin-top: -10px;
     padding-top: 2px; }
-    .chooser-toggle .icon::after, .chooser-toggle .logo::after {
-      content: "\F0A7"; }
-  .chooser-toggle:hover, .chooser-toggle.is-selected {
+  .chooser-toggle:hover {
     color: #f0f0f0; }
-  .chooser-toggle.is-selected .icon::after, .chooser-toggle.is-selected .logo::after {
-    content: "\F0A8"; }
-  .chooser-toggle.is-selected + .chooser-menu {
-    display: block;
-    color: inherit; }
 
 .chooser-menu {
   position: absolute;
   top: 3.75em;
   right: 0px;
   left: -1px;
-  background-color: #333333;
   display: none; }
   .chooser-menu li {
     height: 3.75em;
     padding: 0.625em 3.125em 0.625em 1.25em;
+    background-color: #333333;
     color: inherit;
-    border: 0; }
+    border: 0;
+    position: relative;
+    z-index: 1; }
     .chooser-menu li:hover {
       color: #f0f0f0; }
+    .chooser-menu li:last-child {
+      border-radius: 0 0 5px 5px; }
 
 .view-controls {
   -webkit-box-flex: 1;
@@ -528,6 +528,9 @@ header {
   box-pack: start;
   position: relative;
   z-index: 11; }
+  .global-header .avatar {
+    position: absolute;
+    right: 0px; }
 
 .sidebar {
   display: block;

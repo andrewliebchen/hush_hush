@@ -37,6 +37,28 @@ $font: $helvetica;
 $font-mono: source-code, $monospace;
 $font-icon: batch-icons;
 
+//************************************************************************//
+// MIXINS
+//************************************************************************//
+
+@mixin carrot($background, $border) {
+  position: relative;
+
+  &::before {
+    $size: 10px;
+    @include position(absolute, 0px 0 0 50%);
+    @include transform(rotate(45deg));
+    background-color: $background;
+    border: 1px solid $border;
+    border-bottom: 0;
+    border-right: 0;
+    content: "";
+    height: $size;
+    margin-left: -($size / 2) - 1px;
+    margin-top: -($size / 2);
+    width: $size;
+  }
+}
 
 //************************************************************************//
 // ELEMENTS
@@ -269,6 +291,13 @@ li {
   line-height: $small;
   padding: 0;
   position: relative;
+
+  &.is-selected {
+    .chooser-menu {
+      display: block;
+      color: inherit;
+    }
+  }
 }
 
 .chooser-toggle {
@@ -284,42 +313,32 @@ li {
     font-size: em(24);
     margin-top: -($size / 2);
     padding-top: 2px;
-
-    &::after {
-      content: "\F0A7";
-    }
   }
 
-  &:hover,
-  &.is-selected {
+  &:hover {
     color: $color-foreground;
-  }
-
-  &.is-selected {
-    .icon::after {
-      content: "\F0A8";
-    }
-
-    + .chooser-menu {
-      display: block;
-      color: inherit;
-    }
   }
 }
 
 .chooser-menu {
   @include position(absolute, $large 0px 0 -1px);
-  background-color: $color-background;
   display: none;
 
   li {
     height: $large;
     padding: $padding em(50) $padding $padding*2;
+    background-color: $color-background;
     color: inherit;
     border: 0;
+    position: relative;
+    z-index: 1;
 
     &:hover {
       color: $color-foreground;
+    }
+
+    &:last-child {
+      border-radius: 0 0 5px 5px;
     }
   }
 }
@@ -410,6 +429,10 @@ header {
   @include box-pack(start);
   position: relative;
   z-index: 11;
+
+  .avatar {
+    @include position(absolute, 0 0px 0 0);
+  }
 }
 
 .sidebar {
