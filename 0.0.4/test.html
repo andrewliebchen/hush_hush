@@ -81,10 +81,61 @@
   </header>
 
   <section class="pane-container" data-resizeable="pane">
-    <div id="conversations" class="pane">
-      Conversations
+    <div id="conversations" class="pane conversations-pane">
+      <div class="scroll-container">
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>3 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>1 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>30 minutes ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>Just now</time>
+          </footer>
+        </article>
+      </div>
+      <form class="comment comment-form">
+        <textarea></textarea>
+        <a href="#" class="button">Add comment</a>
+      </form>
     </div>
-    <div id="code" class="pane">
+
+    <div id="code" class="pane code-pane">
       <header class="code-header">
         file/filename.html.erb
       </header>
@@ -95,7 +146,7 @@
             This is a line of code
           </code>
         </div>
-        <div class="line">
+        <div class="line" data-toggle="code-ref">
           <div class="line-number">2</div>
           <code class="line-code">
             This is a <i>line</i> of code

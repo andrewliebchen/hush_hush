@@ -170,6 +170,10 @@ li {
   text-align: center;
 }
 
+.scroll-container {
+  overflow: scroll;
+}
+
 //************************************************************************//
 // COMPONENTS
 //************************************************************************//
@@ -325,11 +329,12 @@ li {
   display: none;
 
   li {
+    background-color: $color-fillometer;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
     height: $large;
     padding: $padding em(50) $padding $padding*2;
-    background-color: $color-background;
-    color: inherit;
-    border: 0;
     position: relative;
     z-index: 1;
 
@@ -568,6 +573,7 @@ header {
 
   .pane {
     display: none;
+    position: relative;
 
     &.is-active {
       display: block;
@@ -581,11 +587,60 @@ header {
   }
 }
 
-// CODE
-.code {
-
+// COMMENTS
+.conversations-pane {
+  height: 100%;
+  
+  .scroll-container {
+    @include position(absolute, 0px 0 0px 0);
+  }
 }
 
+.comment {
+  @include pad(default);
+  border-top: 1px solid $color-midground;
+
+  &:first-child {
+    border: 0;
+  }
+
+  p {
+    @include pad(0 default);
+  }
+}
+
+.comment-header {
+  @include pad(0 0 default);
+  color: darken($color-foreground, 40%);
+  font-weight: bold;
+  font-size: em(18);
+}
+
+.comment-footer {
+  @include pad(default 0 0);
+  color: $color-midground;
+  text-align: right;
+}
+
+.comment-form {
+  @include position(absolute, 0 0 0px 0);
+  @include pad(default);
+  @include fill-parent;
+  background-color: $color-background;
+
+  textarea {
+    border-radius: 5px 5px 0 0;
+    min-height: em(80);
+    width: 100%;
+  }
+
+  .button {
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+  }
+}
+
+// CODE
 .code-header {
   @include pad($padding default);
   color: $color-foreground;
@@ -608,30 +663,28 @@ header {
 .line-number, 
 .line-code {
   $height: em(40);
-  line-height: $height;
   float: left;
   font-family: $font-mono;
   height: $height;
+  line-height: $height;
   padding: 0 $padding;
 }
 
 .line-number {
-  width: 15%;
   border-right: 1px solid $color-midground;
   text-align: right;
+  width: 15%;
 }
 
 .line-code {
-  width: 85%;
   margin: 0;
   text-align: left;
+  width: 85%;
 
   i {
+    border-bottom: 1px solid $color-foreground;
+    cursor: pointer;
     font-style: normal;
-    background-color: $color-foreground;
-    padding: 5px 5px 10px;
-    border-radius: 3px 3px 0 0;
-    color: $color-background;
     font-weight: bold;
   }
 }
@@ -639,6 +692,7 @@ header {
 .code-ref {
   background-color: black;
   border-top: 1px solid $color-foreground;
+  display: none;
 
   .ref-header {
     @include pad(default);
@@ -655,6 +709,14 @@ header {
       background-color: lighten(black, 15%);
     }
   }
+}
+
+//************************************************************************//
+// PAGES
+//************************************************************************//
+
+.page-test {
+  overflow: hidden;
 }
 
 //************************************************************************//
@@ -675,5 +737,20 @@ body.pane-open {
   [data-fillometer="#{$i}"] {
     $perc: (100 - $i) / 100;
     @include background-image(linear-gradient(to left, $color-background percentage($perc), transparent percentage($perc) ));
+  }
+}
+
+.line.is-selected {
+  i {
+    background-color: $color-foreground;
+    padding: 5px 5px 10px;
+    margin: 0 -5px;
+    border-radius: 3px 3px 0 0;
+    color: $color-background;
+    border: 0;
+  }
+
+  + .code-ref  {
+    display: block;
   }
 }
