@@ -27,17 +27,29 @@ $(function(){
     $(this).removeClass('is-selected');
   });
 
-  // Toggle conversation pane
+  // Toggle pane
   $('[data-toggle-pane]').click(function(){
+    var paneToggle = $(this);
     var paneId = $(this).data('toggle-pane');
     
     $('.pane.is-active').removeClass('is-active');
     $('#' + paneId).addClass('is-active');
-    $('[data-toggle-pane].is-selected').removeClass('is-selected');
-    $(this).toggleClass('is-selected');
 
-    if(!$('body').hasClass('pane-open')) {
-      $('body').toggleClass('pane-open');
+    if(!$('body').hasClass('pane-open')){
+      $('body').addClass('pane-open');
+      $('[data-toggle-pane].is-selected').removeClass('is-selected');
+      paneToggle.addClass('is-selected');
+    } else if(paneToggle.hasClass('is-selected')){
+      $('body').removeClass('pane-open'); 
+      paneToggle.removeClass('is-selected');
+    } else {
+      $('[data-toggle-pane].is-selected').removeClass('is-selected');
+      paneToggle.addClass('is-selected');
     }
+  });
+
+  // Toggle rulers 
+  $('[data-toggle="rulers"').click(function(){
+    $('body').toggleClass('rulers-open');
   });
 });

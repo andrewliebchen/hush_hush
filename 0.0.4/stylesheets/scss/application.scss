@@ -32,6 +32,7 @@ $large:  em(60);
 
 $padding: em(10);
 $pane-width: 25%;
+$ruler-size: em(30);
 
 $font: $helvetica;
 $font-mono: source-code, $monospace;
@@ -432,6 +433,7 @@ header {
   @include box-align(start);
   @include box-orient(horizontal);
   @include box-pack(start);
+  background-color: $color-background;
   position: relative;
   z-index: 11;
 }
@@ -711,9 +713,50 @@ header {
   }
 }
 
+// RULERS
+.ruler {
+  @include transition;
+  background-color: rgba(white, 0.8);
+  border-color: rgba($color-midground, 0.3);
+  left: 0;
+  position: absolute;
+  z-index: 9;
+}
+
+.ruler-top {
+  @include size(100% $ruler-size);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  top: -$ruler-size;
+}
+
+.ruler-left {
+  @include size($ruler-size 100%);
+  border-right-style: solid;
+  border-right-width: 1px;
+  top: $ruler-size;
+  left: -$ruler-size;
+}
+
+.ruler-corner {
+  @include size($ruler-size);
+  background-color: transparent;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
 //************************************************************************//
 // PAGES
 //************************************************************************//
+
+.page-home {
+  .global-header {
+    .avatar {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
 
 .page-test {
   overflow: hidden;
@@ -730,6 +773,16 @@ body.pane-open {
 
   .pane-container {
     right: 0;
+  }
+}
+
+body.rulers-open {
+  .ruler-top {
+    top: 0;
+  }
+
+  .ruler-left {
+    left: 0;
   }
 }
 

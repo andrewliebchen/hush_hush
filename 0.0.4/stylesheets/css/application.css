@@ -533,6 +533,7 @@ header {
   -webkit-box-pack: start;
   -moz-box-pack: start;
   box-pack: start;
+  background-color: #333333;
   position: relative;
   z-index: 11; }
 
@@ -802,6 +803,42 @@ header {
     .code-ref .code-container .line:hover {
       background-color: #262626; }
 
+.ruler {
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(85, 85, 85, 0.3);
+  left: 0;
+  position: absolute;
+  z-index: 9; }
+
+.ruler-top {
+  width: 100%;
+  height: 1.875em;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  top: -1.875em; }
+
+.ruler-left {
+  width: 1.875em;
+  height: 100%;
+  border-right-style: solid;
+  border-right-width: 1px;
+  top: 1.875em;
+  left: -1.875em; }
+
+.ruler-corner {
+  width: 1.875em;
+  height: 1.875em;
+  background-color: transparent;
+  border-right-style: solid;
+  border-right-width: 1px; }
+
+.page-home .global-header .avatar {
+  position: absolute;
+  right: 0; }
+
 .page-test {
   overflow: hidden; }
 
@@ -809,6 +846,11 @@ body.pane-open .preview {
   width: 75%; }
 body.pane-open .pane-container {
   right: 0; }
+
+body.rulers-open .ruler-top {
+  top: 0; }
+body.rulers-open .ruler-left {
+  left: 0; }
 
 [data-fillometer="1"] {
   background-image: -webkit-linear-gradient(right, #333333 99%, transparent 99%);
