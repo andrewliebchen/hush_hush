@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Top Secret Prototype</title>
+
+  <link rel="stylesheet" href="stylesheets/css/application.css" type="text/css" media="screen">
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="javascripts/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="javascripts/app.js"></script>
+</head>
+
+<body class="page-test">
+  <header class="global-header">
+    <a href="index.html" class="logo">&#xF147;</a>
+    <div class="chooser" data-hover-toggle="chooser">
+      <div class="chooser-toggle" data-fillometer="55">
+        <h3>topic-branch-name</h3>
+        <small><strong>July 13</strong> 8:55pm</small>
+        <span class="icon">&#xF0AA;</span>
+      </div>
+
+      <ul class="chooser-menu">
+        <li data-fillometer="50">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="45">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="35">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+        <li data-fillometer="30">
+          <h3>topic-branch-name</h3>
+          <small><strong>July 13</strong> 8:55pm</small>
+        </li>
+      </ul>
+    </div>
+    <div class="chooser" data-hover-toggle="chooser">
+      <div class="chooser-toggle" data-fillometer="75">
+        <h3>feature/test-name.rb</h3>
+        <small>"As a dude I want to catch waves"</small>
+        <span class="icon">&#xF0AA;</span>
+      </div>
+
+      <ul class="chooser-menu">
+        <li data-fillometer="50">
+          <h3>feature/test-name.rb</h3>
+          <small>"As a dude I want to catch waves"</small>
+        </li>
+        <li data-fillometer="45">
+          <h3>feature/test-name.rb</h3>
+          <small>"As a dude I want to catch waves"</small>
+        </li>
+        <li data-fillometer="35">
+          <h3>feature/test-name.rb</h3>
+          <small>"As a dude I want to catch waves"</small>
+        </li>
+      </ul>
+    </div>
+    <div class="block tool" data-toggle="marquee"><span class="icon">&#xF020;</span></div>
+    <div class="block tool" data-toggle="rulers"><span class="icon">&#xF128;</span></div>
+    <div class="block tool" data-toggle-pane="conversations"><span class="icon">&#xF004;</span></div>
+    <div class="block tool" data-toggle-pane="code"><span class="icon">&#xF061;</span></div>
+    <div class="avatar right">
+      <img src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/1000/150/crops/350_2x.jpg">
+    </div>
+  </header>
+  
+  <section class="view-controls">
+    <div class="slider-end branch icon">&#xF109;</div>
+    <div id="preview_slider" class="slider">
+      <div class="ui-slider-track"></div>
+    </div>
+    <div class="slider-end master icon">&#xF175;</div>
+  </section>
+  
+  <section class="pane-container" data-resizeable="pane">
+    <div id="conversations" class="pane conversations-pane">
+      <div class="scroll-container">
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>3 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>2 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>1 hours ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>30 minutes ago</time>
+          </footer>
+        </article>
+        <article class="comment">
+          <div class="comment-header">
+            <span class="icon">&#xF044;</span>Andrew Liebchen
+          </div>
+          <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris.</p>
+          <footer class="comment-footer">
+            <span class="icon">&#xF167;</span><time>Just now</time>
+          </footer>
+        </article>
+      </div>
+      <form class="comment comment-form">
+        <textarea></textarea>
+        <a href="#" class="button">Add comment</a>
+      </form>
+    </div>
+
+    <div id="code" class="pane code-pane">
+      <header class="code-header">
+        file/filename.html.erb
+      </header>
+      <div class="code-container">
+        <div class="line">
+          <div class="line-number">1</div>
+          <code class="line-code">
+            This is a line of code
+          </code>
+        </div>
+        <div class="line" data-toggle="code-ref">
+          <div class="line-number">2</div>
+          <code class="line-code">
+            This is a <i>line</i> of code
+          </code>
+        </div>
+        <div class="code-ref">
+          <header class="ref-header">
+            css/<b>application.css</b><span class="icon">&#xF0AA;</span>
+          </header>
+          <div class="code-container">
+            <div class="line">
+              <div class="line-number">183</div>
+              <code class="line-code">
+                This is a line of CSS
+              </code>
+            </div>
+            <div class="line">
+              <div class="line-number">184</div>
+              <code class="line-code">
+                This is a line of CSS
+              </code>
+            </div>
+            <div class="line">
+              <div class="line-number">185</div>
+              <code class="line-code">
+                This is a line of CSS
+              </code>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="line-number">2</div>
+          <code class="line-code">
+            This is a line of code
+          </code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preview" class="preview">
+    <div class="ruler ruler-top"><div class="ruler ruler-corner"></div></div>
+    <div class="ruler ruler-left"></div>
+    <div class="ruler ruler-dimensions">size x size</div>
+    <iframe src="https://en.wikipedia.org" id="master_view"></iframe>
+    <iframe src="https://es.wikipedia.org" id="branch_view" style="opacity: 0.5"></iframe>
+  </section>
+</body>
+</html>

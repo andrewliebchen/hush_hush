@@ -1,0 +1,837 @@
+//************************************************************************//
+// IMPORTS
+//************************************************************************//
+
+@import "vendor/normalize";
+@import "bourbon/bourbon";
+
+// Neat settings
+@import "neat/neat-helpers";
+$max-width: 100%;
+
+@import "neat/neat";
+
+// Fonts
+@include font-face(batch-icons, '../../fonts/batch/batch-icons-webfont');
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Regular-webfont', normal);
+@include font-face(source-code, '../../fonts/source-code/SourceCodePro-Bold-webfont', bold);
+
+//************************************************************************//
+// VARIABLES
+//************************************************************************//
+
+$color-background: #333;
+$color-midground:  #555;
+$color-foreground: #F0F0F0;
+$color-fillometer: lighten($color-background, 5%);
+$status-bad:       rgb(251, 111, 111);
+
+$small:  em(20);
+$medium: em(40);
+$large:  em(60);
+
+$padding: em(10);
+$pane-width: 25%;
+$ruler-size: em(30);
+
+$font: $helvetica;
+$font-mono: source-code, $monospace;
+$font-icon: batch-icons;
+
+//************************************************************************//
+// MIXINS
+//************************************************************************//
+
+@mixin carrot($background, $border) {
+  position: relative;
+
+  &::before {
+    $size: 10px;
+    @include position(absolute, 0px 0 0 50%);
+    @include transform(rotate(45deg));
+    background-color: $background;
+    border: 1px solid $border;
+    border-bottom: 0;
+    border-right: 0;
+    content: "";
+    height: $size;
+    margin-left: -($size / 2) - 1px;
+    margin-top: -($size / 2);
+    width: $size;
+  }
+}
+
+//************************************************************************//
+// ELEMENTS
+//************************************************************************//
+
+html,
+body {
+  background-color: $color-background;
+  color: $color-foreground;
+  font-family: $font;
+  font-size: 14px;
+  line-height: em(20);
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: em(36);
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.button {
+  $size: $medium;
+  background-color: $color-midground;
+  border-radius: 5px;
+  color: $color-foreground;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: $size;
+  line-height: $size;
+  min-width: $size;
+  padding: 0 em(10);
+  text-align: center;
+
+  &.active {
+    background-color: $color-foreground;
+    color: $color-midground;
+  }
+}
+
+.button-group {
+  .button {
+    border-radius: 0;
+    float: left;
+    margin-right: 3px;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+      margin-right: 0;
+    }
+
+    &:only-child {
+      border-radius: 5px;
+    }
+  }
+}
+
+.icon {
+  font-family: $font-icon;
+  font-weight: normal;
+  padding-right: 5px;
+}
+
+[data-fillometer] {
+  background-color: $color-fillometer;
+
+  &:hover {
+    background-color: $status-bad !important;
+  }
+}
+
+.logo {
+  @extend .block;
+  @extend .icon;
+  float: left;
+  text-align: center;
+}
+
+.scroll-container {
+  overflow: scroll;
+}
+
+//************************************************************************//
+// COMPONENTS
+//************************************************************************//
+
+.block {
+  @include size($large);
+  border-color: $color-midground;
+  border-right: 1px solid $color-midground;
+  color: $color-foreground;
+  cursor: pointer;
+  display: block;
+  float: left;
+  line-height: $medium;
+  padding: em(10);
+  position: relative;
+
+  .icon {
+    color: inherit;
+    display: block;
+    font-size: em(20);
+    padding: 0;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: black;
+  }
+
+  &.is-selected {
+    background-color: $color-midground;
+    border-color: $color-background;
+    color: $color-foreground;
+
+    &:hover {
+      background-color: lighten($color-midground, 5%);
+    }
+  }
+
+  &[data-toggle-pane].is-selected {
+    &::before {
+      $size: 10px;
+      @include position(absolute, 0 0 0px 50%);
+      @include transform(rotate(45deg));
+      background-color: $color-background;
+      border-bottom: 0;
+      border-right: 0;
+      content: "";
+      height: $size;
+      margin-left: -($size / 2) - 1px;
+      margin-bottom: -($size / 2);
+      width: $size;
+    }
+  }
+}
+
+.avatar {
+  @extend .block;
+  border: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.avatar.small {
+  @include size($small);
+  border-radius: $small / 2;
+}
+
+.thumbnail {
+  overflow: hidden;
+
+  img {
+    @include size(100% auto);
+    display: block;
+  }
+}
+
+.dropdown-toggle {
+  border-radius: 5px;
+  border: 1px solid $color-midground;
+  color: darken($color-foreground, 20%);
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 10px;
+
+  b {
+    color: $color-foreground;
+  }
+
+  .icon {
+    @include size(em(30));
+    border-left: 2px solid $color-midground;
+    color: inherit;
+    margin-left: 10px;
+    padding-left: 10px;
+  }
+
+  &:hover {
+    background-color: $color-midground;
+
+    .icon {
+      border-color: $color-background;
+    }
+  }
+}
+
+.chooser {
+  @include box-flex(1);
+  @include omega;
+  border-bottom: 1px solid $color-midground;
+  border-right: 1px solid $color-midground;
+  color: $color-foreground;
+  line-height: $small;
+  padding: 0;
+  position: relative;
+
+  &.is-selected {
+    .chooser-menu {
+      display: block;
+      color: inherit;
+    }
+  }
+}
+
+.chooser-toggle {
+  cursor: pointer;
+  height: $large - em(1);
+  padding: $padding em(50) $padding $padding*2;
+
+  .icon {
+    $size: 20px;
+    @include position(absolute, 50% em(10) 0px 0);
+    @include size($size);
+    color: $color-midground;
+    font-size: em(24);
+    margin-top: -($size / 2);
+    padding-top: 2px;
+  }
+
+  &:hover {
+    .icon {
+      color: $color-foreground;
+    }
+  }
+}
+
+.chooser-menu {
+  @include position(absolute, $large 0px 0 -1px);
+  display: none;
+
+  li {
+    background-color: $color-fillometer;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    height: $large;
+    padding: $padding em(50) $padding $padding*2;
+    position: relative;
+    z-index: 1;
+
+    &:last-child {
+      border-radius: 0 0 5px 5px;
+    }
+  }
+}
+
+.view-controls {
+  @extend .block;
+  @include position(absolute, $large 0 0px 0px);
+  height: auto;
+  z-index: 10;
+  overflow: hidden;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  .slider-end {
+    @include position(absolute, 0px 0px 0 0px);
+    line-height: $large;
+    text-align: center;
+    opacity: 0.5;
+
+    &.branch {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}
+
+.slider {
+  @include position(absolute, $large 0px $large 0px);
+
+  .ui-slider-handle {
+    $size: 24px;
+    @include position(absolute, 0 0 0 50%);
+    @include size($size);
+    background-color: $color-midground;
+    border-radius: $size / 2;
+    border: 5px solid $color-background;
+    cursor: pointer;
+    margin-left: -($size / 2) ;
+    outline: none;
+    z-index: 1;
+
+    &::before {
+      $size: 10px;
+      @include position(absolute, 50% 0 0 28px);
+      @include transform(rotate(45deg));
+      background-color: $color-foreground;
+      border-bottom: 0;
+      border-right: 0;
+      border: 1px solid $color-foreground;
+      content: "";
+      height: $size;
+      margin-top: -($size / 2) - 1px;
+      width: $size;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $color-foreground;
+    }
+  }
+
+  .ui-slider-track {
+    $width: 4px;
+    @include position(relative, 0 0 0 50%);
+    background-color: $color-midground;
+    width: $width;
+    margin-left: -($width / 2);
+    height: 100%;
+  }
+}
+
+.preview {
+  @include transition;
+  @include position(relative, 0px 0px 0px 0px);
+  @include size(100%);
+  z-index: 1;
+  overflow: hidden;
+
+  iframe {
+    @include position(absolute, 0px 0px 0px 0px);
+    @include size(100%);
+    border: 0;
+    padding-left: $large;
+  }
+}
+
+//************************************************************************//
+// MODULES
+//************************************************************************//
+
+header {
+  border-bottom: 1px solid $color-midground;
+  color: $color-midground;
+  height: $large;
+  line-height: $medium;
+}
+
+.global-header {
+  @include display-box;
+  @include box-align(start);
+  @include box-orient(horizontal);
+  @include box-pack(start);
+  background-color: $color-background;
+  position: relative;
+  z-index: 11;
+}
+
+.sidebar {
+  @include span-columns(3);
+  @include omega;
+
+  nav {
+    @include box(horizontal, start, stretch);
+    padding-top: em(10);
+    width: 100%;
+
+    .button {
+      @include box-flex(1);
+      display: block;
+      float: none;
+    }
+  }
+}
+
+.build-list {
+  margin-top: $gutter;
+  border: 1px solid $color-midground;
+  border-radius: 5px;
+  overflow: hidden;
+
+  li {
+    @include row();
+    height: $large;
+    line-height: $large;
+    border-top: 1px solid $color-midground;
+    padding: 0 em(20);
+  }
+
+  .header {
+    background-color: $color-midground;
+    border: 0;
+    color: lighten($color-midground, 40%);
+    height: $medium;
+    line-height: $medium;
+  }
+
+  .avatar.small {
+    margin: em(20) em(10) 0 0;
+    float: left;
+  }
+}
+
+.main {
+  @include span-columns(9);
+  @include omega;
+  @include position(absolute, $large 0px 0px 0);
+  @include pad(0 em(20) em(20));
+  border-left: 1px solid $color-midground;
+  background-color: lighten($color-background, 3%);
+}
+
+.main-header {
+  @include pad(em(20) 0 0);
+  color: $color-foreground;
+  border: 0;
+}
+
+.main-title {
+  .icon {
+    margin-right: 10px;
+  }
+
+  .commit-message {
+    color: darken($color-foreground, 20%);
+    font-family: $font-mono;
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 20px;
+  }
+}
+
+.test-list {
+  @include outer-container;
+  @include pad(default $gutter 0);
+
+  .test {
+    @include span-columns(3 of 9);
+    border-radius: 3px;
+    border: 1px solid $color-midground;
+    color: $color-midground;
+    cursor: pointer;
+    display: block;
+    margin-bottom: $gutter * 1.5;
+
+    &:hover {
+      background-color: $color-midground;
+      border-color: lighten($color-midground, 20%);
+      box-shadow: 0 0 0 5px darken($color-background, 3%);
+      color: white;
+
+      [data-fillometer] {
+        @extend [data-fillometer]:hover;
+      }
+    }
+
+    &:nth-child(3) {
+      @include omega;
+    }
+  }
+
+  .thumbnail {
+    height: em(250);
+    margin: $padding;
+  }
+
+  .test-title {
+    $size: em(50);
+    border: 0;
+    border-color: inherit;
+    border-style: inherit;
+    border-top-width: 1px;
+    font-family: $font-mono;
+    font-weight: normal;
+    height: $size;
+    line-height: $size;
+    padding: 0 $padding;
+  }
+}
+
+.pane-container {
+  @include transition;
+  @include position(absolute, $large 0px 0px 0);
+  background-color: $color-background;
+  width: $pane-width;
+  right: -$pane-width;
+
+  .pane-resizer {
+    @include position(absolute, 0px 0 0px 0px);
+    width: 10px;
+    cursor: col-resize;
+  }
+
+  .pane {
+    display: none;
+    position: relative;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .ui-resizable-handle {
+    @include position(absolute, 0px 0 0px 0px);
+    width: 10px;
+    cursor: col-resize;
+  }
+}
+
+// COMMENTS
+.conversations-pane {
+  height: 100%;
+  
+  .scroll-container {
+    @include position(absolute, 0px 0 0px 0);
+  }
+}
+
+.comment {
+  @include pad(default);
+  border-top: 1px solid $color-midground;
+
+  &:first-child {
+    border: 0;
+  }
+
+  p {
+    @include pad(0 default);
+  }
+}
+
+.comment-header {
+  @include pad(0 0 default);
+  color: darken($color-foreground, 40%);
+  font-weight: bold;
+  font-size: em(18);
+}
+
+.comment-footer {
+  @include pad(default 0 0);
+  color: $color-midground;
+  text-align: right;
+}
+
+.comment-form {
+  @include position(absolute, 0 0 0px 0);
+  @include pad(default);
+  @include fill-parent;
+  background-color: $color-background;
+
+  textarea {
+    border-radius: 5px 5px 0 0;
+    min-height: em(80);
+    width: 100%;
+  }
+
+  .button {
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+  }
+}
+
+// CODE
+.code-header {
+  @include pad($padding default);
+  color: $color-foreground;
+  text-align: center;
+}
+
+.code-container {
+  @include outer-container;
+  border-bottom: 1px solid $color-midground;
+}
+
+.line {
+  @include clearfix;
+
+  &:hover {
+    background-color: darken($color-background, 5%);
+  }
+}
+
+.line-number, 
+.line-code {
+  $height: em(40);
+  float: left;
+  font-family: $font-mono;
+  height: $height;
+  line-height: $height;
+  padding: 0 $padding;
+}
+
+.line-number {
+  border-right: 1px solid $color-midground;
+  text-align: right;
+  width: 15%;
+}
+
+.line-code {
+  margin: 0;
+  text-align: left;
+  width: 85%;
+
+  i {
+    border-bottom: 1px solid $color-foreground;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: bold;
+  }
+}
+
+.code-ref {
+  background-color: black;
+  border-top: 1px solid $color-foreground;
+  display: none;
+
+  .ref-header {
+    @include pad(default);
+
+    .icon {
+      float: right;
+    }
+  }
+
+  .code-container {
+    border-color: $color-foreground;
+
+    .line:hover {
+      background-color: lighten(black, 15%);
+    }
+  }
+}
+
+// RULERS
+.ruler {
+  @include transition;
+  background-color: rgba(black, 0.2);
+  background-position: 0 0;
+  left: 0;
+  position: absolute;
+  z-index: 9;
+}
+
+.ruler-top {
+  @include size(100% $ruler-size);
+  background-image: url("../../images/ruler-horizontal.svg");
+  background-position-x: $ruler-size;
+  background-repeat: repeat-x;
+  top: -$ruler-size;
+}
+
+.ruler-left {
+  @include size($ruler-size 100%);
+  background-image: url("../../images/ruler-vertical.svg");
+  background-repeat: repeat-y;
+  left: -$ruler-size;
+  top: $ruler-size;
+}
+
+.ruler-corner {
+  @include size($ruler-size);
+  background-color: white;
+}
+
+.ruler-dimensions {
+  @include position(absolute, $ruler-size+1em 1em 0 auto);
+  background-color: rgba(black, 0.6);
+  border-radius: 3px;
+  color: $color-foreground;
+  display: inline-block;
+  font-weight: bold;
+  padding: 5px 10px;
+  display: none;
+}
+
+//************************************************************************//
+// PAGES
+//************************************************************************//
+
+.page-home {
+  .global-header {
+    .avatar {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.page-test {
+  overflow: hidden;
+}
+
+//************************************************************************//
+// STATES
+//************************************************************************//
+
+body.pane-open {
+  .preview {
+    width: 100% - $pane-width;
+  }
+
+  .pane-container {
+    right: 0;
+  }
+}
+
+body.rulers-open {
+  .ruler-top {
+    top: 0;
+  }
+
+  .ruler-left {
+    left: 0;
+  }
+
+  .ruler-dimensions {
+    display: block;
+  }
+}
+
+@for $i from 1 through 100 {
+  [data-fillometer="#{$i}"] {
+    $perc: (100 - $i) / 100;
+    @include background-image(linear-gradient(to left, $color-background percentage($perc), transparent percentage($perc) ));
+  }
+}
+
+.line.is-selected {
+  i {
+    background-color: $color-foreground;
+    padding: 5px 5px 10px;
+    margin: 0 -5px;
+    border-radius: 3px 3px 0 0;
+    color: $color-background;
+    border: 0;
+  }
+
+  + .code-ref  {
+    display: block;
+  }
+}
