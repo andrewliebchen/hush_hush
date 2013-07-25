@@ -732,17 +732,17 @@ header {
   @include transition;
   background-color: rgba(black, 0.2);
   background-position: 0 0;
-  left: 0;
   position: absolute;
-  z-index: 9;
+  z-index: 8;
 }
 
 .ruler-top {
   @include size(100% $ruler-size);
   background-image: url("../../images/ruler-horizontal.svg");
-  background-position-x: $ruler-size;
+  background-position-x: $large + $ruler-size;
   background-repeat: repeat-x;
   top: -$ruler-size;
+  left: $large;
 }
 
 .ruler-left {
@@ -750,12 +750,7 @@ header {
   background-image: url("../../images/ruler-vertical.svg");
   background-repeat: repeat-y;
   left: -$ruler-size;
-  top: $ruler-size;
-}
-
-.ruler-corner {
-  @include size($ruler-size);
-  background-color: white;
+  top: 0;
 }
 
 .ruler-dimensions {
@@ -806,7 +801,7 @@ body.rulers-open {
   }
 
   .ruler-left {
-    left: 0;
+    left: $large;
   }
 
   .ruler-dimensions {
