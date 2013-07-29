@@ -109,11 +109,11 @@ li {
 }
 
 .left {
-  float: left;
+  float: left !important;
 }
 
 .right {
-  float: right;
+  float: right !important;
 }
 
 .button {
@@ -173,13 +173,6 @@ li {
   &:hover {
     background-color: $status-bad !important;
   }
-}
-
-.logo {
-  @extend .block;
-  @extend .icon;
-  float: left;
-  text-align: center;
 }
 
 .scroll-container {
@@ -264,22 +257,24 @@ li {
 }
 
 .avatar {
-  @extend .block;
-  border: 0;
   overflow: hidden;
-  padding: 0;
   position: relative;
+
+  &.medium {
+    @include size($medium);
+    border-radius: 2px;
+  }
+
+  &.small {
+    @include size($small);
+    border-radius: 1px;
+  }
 
   img {
     display: block;
     height: auto;
     width: 100%;
   }
-}
-
-.avatar.small {
-  @include size($small);
-  border-radius: $small / 2;
 }
 
 .thumbnail {
@@ -320,7 +315,7 @@ li {
   }
 }
 
-.chooser {
+.chooser,{
   @include box-flex(1);
   @include omega;
   border-bottom: 1px solid $color-midground;
@@ -328,7 +323,6 @@ li {
   color: $color-foreground;
   line-height: $small;
   padding: 0;
-  position: relative;
 
   &.is-selected {
     .chooser-menu {
@@ -341,27 +335,21 @@ li {
 .chooser-toggle {
   cursor: pointer;
   height: $large - em(1);
-  padding: $padding em(50) $padding $padding*2;
+  padding: $padding $padding $padding em(60);
 
   .icon {
     $size: 20px;
-    @include position(absolute, 50% em(10) 0px 0);
+    @include position(absolute, 50% 0 0px $padding);
     @include size($size);
-    color: $color-midground;
     font-size: em(24);
     margin-top: -($size / 2);
     padding-top: 2px;
-  }
-
-  &:hover {
-    .icon {
-      color: $color-foreground;
-    }
   }
 }
 
 .chooser-menu {
   @include position(absolute, $large 0px 0 -1px);
+  margin-top: em(10);
   display: none;
 
   li {
@@ -522,14 +510,86 @@ header {
 // MODULES
 //************************************************************************//
 
-.global-header {
+.application-header {
+  background-color: black;
+  height: $medium;
+  line-height: $medium;
+  @include box-sizing(content-box);
+
+  a {
+    display: block;
+    float: left;
+    @include pad(0 default);
+    border-left: 1px solid $color-background;  
+    color: $color-midground;
+
+    &:hover {
+      background-color: darken($color-background, 10%);
+      color: $color-foreground;
+    }
+  }
+
+  a.logo {
+    border-left: 0;
+    border-right: 1px solid $color-background;
+    font-weight: bold;
+  } 
+}
+
+.page-header {
   @include display-box;
   @include box-align(start);
   @include box-orient(horizontal);
   @include box-pack(start);
-  background-color: $color-background;
   position: relative;
-  z-index: 11;
+
+  nav {
+    @include box-flex(1);
+    @include display-box;
+    @include box-align(start);
+    @include box-orient(horizontal);
+    @include box-pack(start);
+  }
+
+  .nav-step {
+    // @include box-flex(1);
+    color: $color-midground;
+    display: block;
+    height: $large;
+    line-height: $large;
+    padding: 0 em(30) 0 em(20);
+    position: relative;
+
+    &::after {
+      @include position(absolute, em(10) 0px 0 0);
+      @include size(1px $medium);
+      @include transform(rotate(30deg));
+      background-color: $color-midground;
+      content: "";
+      display: block;
+    }
+
+    &:last-child {
+      color: $color-foreground;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    h3 {
+      display: inline-block;
+    }
+
+    .icon {
+      color: inherit;
+    }
+  }
+
+  .block:last-of-type {
+    border-left: 1px solid $color-midground;
+    border-right: 0;
+  }
 }
 
 .tests-list {
@@ -584,9 +644,7 @@ header {
     }
   }
 
-  .avatar.small {
-    @include size($medium);
-    border-radius: 2px;
+  .avatar.medium {
     float: right;
     margin: $padding 0 0 $padding;
   }
@@ -878,12 +936,7 @@ header {
 //************************************************************************//
 
 .page-index {
-  .global-header {
-    .avatar {
-      position: absolute;
-      right: 0;
-    }
-  }
+  
 }
 
 .page-test {
