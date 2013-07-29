@@ -630,6 +630,12 @@ header {
   -moz-box-pack: start;
   box-pack: start;
   position: relative; }
+  .page-header .search {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    line-height: 3.75em;
+    padding: 0 1.25em; }
   .page-header nav {
     -webkit-box-flex: 1;
     -moz-box-flex: 1;

@@ -543,6 +543,13 @@ header {
   @include box-pack(start);
   position: relative;
 
+  .search {
+    @include box-flex(1);
+    line-height: $large;
+    padding: 0 em(20);
+  }
+
+
   nav {
     @include box-flex(1);
     @include display-box;
