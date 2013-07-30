@@ -188,8 +188,7 @@ li {
   height: $large;
 
   a {
-    background-color: $color-midground;
-    border-left: 1px solid $color-foreground;
+    border-left: 5px solid darken($color-midground, 10%);
     float: left;
     height: inherit;
     position: relative;
@@ -202,6 +201,10 @@ li {
     &:hover {
       box-shadow: inset 0 0 0 3px white;
     }
+  }
+
+  [data-fail-intensity="0"] {
+    background-color: $color-midground;
   }
 }
 
@@ -471,6 +474,7 @@ header {
   @include transition;
   border-radius: 5px;
   border: 1px solid $color-foreground;
+  cursor: pointer;
   padding: 3px;
 
   .switch {
@@ -511,10 +515,10 @@ header {
 //************************************************************************//
 
 .application-header {
+  @include box-sizing(content-box);
   background-color: black;
   height: $medium;
   line-height: $medium;
-  @include box-sizing(content-box);
 
   a {
     display: block;
@@ -542,54 +546,45 @@ header {
   @include box-orient(horizontal);
   @include box-pack(start);
   position: relative;
+  border-bottom-width: 3px;
 
-  .search {
+  .search-container {
     @include box-flex(1);
-    line-height: $large;
-    padding: 0 em(20);
-  }
-
-
-  nav {
-    @include box-flex(1);
-    @include display-box;
-    @include box-align(start);
-    @include box-orient(horizontal);
-    @include box-pack(start);
-  }
-
-  .nav-step {
-    // @include box-flex(1);
-    color: $color-midground;
-    display: block;
     height: $large;
     line-height: $large;
-    padding: 0 em(30) 0 em(20);
     position: relative;
 
-    &::after {
-      @include position(absolute, em(10) 0px 0 0);
-      @include size(1px $medium);
-      @include transform(rotate(30deg));
-      background-color: $color-midground;
-      content: "";
-      display: block;
-    }
-
-    &:last-child {
-      color: $color-foreground;
-
-      &::after {
-        content: none;
-      }
-    }
-
-    h3 {
-      display: inline-block;
-    }
-
     .icon {
-      color: inherit;
+      @include position(absolute, 0px 0 0 em(20));
+      color: $color-midground;
+    }
+
+    input[type="search"] {
+      @include position(absolute, 0px 0px 0px 0px);
+      background-color: $color-background;
+      border: 0;
+      border-bottom: 3px solid $color-midground;
+      color: $color-foreground;
+      line-height: $large;
+      outline: none;
+      padding: 0 em(20) 0 em(50);
+
+      @include placeholder {
+        color: $color-midground;
+      }
+
+      &:focus {
+        background-color: $color-midground;
+        color: $color-foreground;
+
+        @include placeholder {
+          color: $color-background;
+        }
+      }
+
+      &:focus + .icon {
+        color: $color-background;
+      }
     }
   }
 
@@ -606,7 +601,7 @@ header {
 }
 
 .test {
-  border: 1px solid $color-foreground;
+  border: 3px solid $color-midground;
   border-radius: 5px;
   margin-bottom: $gutter;
 
@@ -618,11 +613,12 @@ header {
 .test-header {
   @include row();
   border: 0;
-  border-bottom: 1px solid $color-foreground;
+  // border-bottom: 1px solid $color-foreground;
   color: white;
   height: $large;
   line-height: $large;
   padding: 0 0 0 em(20);
+  background-color: $feature-header-background;
 
   .test-title {
     border-right: 1px solid $color-midground;
@@ -660,7 +656,7 @@ header {
 .feature-details {
   @include fill-parent;
   @include outer-container;
-  border-top: 1px solid $color-foreground;
+  // border-top: 1px solid $color-foreground;
 
   .feature-header {
     background-color: $feature-header-background;
@@ -691,7 +687,7 @@ header {
     @include row();
     background-color: $feature-header-background;
     border-radius: 0 0 4px 4px;
-    border-top: 1px solid $color-foreground;
+    border-top: 1px solid $color-midground;
     color: $color-midground;
     font-weight: bold;
     height: $medium;
@@ -707,10 +703,15 @@ header {
 
 .step {
   @include row();
-  border-top: 1px solid $color-midground;
+  @include transition(all 0.05s);
+  border-top: 3px solid $color-midground;
 
   &:first-of-type {
     border: 0;
+  }
+
+  &:hover {
+    background-color: darken($color-background, 10%);
   }
 
   .thumbnail {
@@ -956,7 +957,7 @@ header {
 
 .failometer {
   .is-selected {
-    @include carrot($feature-header-background, $color-foreground);
+    @include carrot($feature-header-background, null);
 
     &::before {
       top: auto;

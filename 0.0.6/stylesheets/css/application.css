@@ -305,8 +305,7 @@ li {
   background-color: white;
   height: 3.75em; }
   .failometer a {
-    background-color: #555555;
-    border-left: 1px solid #f0f0f0;
+    border-left: 5px solid #3b3b3b;
     float: left;
     height: inherit;
     position: relative;
@@ -315,6 +314,8 @@ li {
       border: 0; }
     .failometer a:hover {
       box-shadow: inset 0 0 0 3px white; }
+  .failometer [data-fail-intensity="0"] {
+    background-color: #555555; }
 
 .block, .view-controls {
   width: 3.75em;
@@ -563,6 +564,7 @@ header {
   transition: all 0.15s ease-out 0;
   border-radius: 5px;
   border: 1px solid #f0f0f0;
+  cursor: pointer;
   padding: 3px; }
   .toggle-switch:before, .toggle-switch:after {
     content: " ";
@@ -596,12 +598,12 @@ header {
       float: right; }
 
 .application-header {
-  background-color: black;
-  height: 2.5em;
-  line-height: 2.5em;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
-  box-sizing: content-box; }
+  box-sizing: content-box;
+  background-color: black;
+  height: 2.5em;
+  line-height: 2.5em; }
   .application-header a {
     display: block;
     float: left;
@@ -629,58 +631,54 @@ header {
   -webkit-box-pack: start;
   -moz-box-pack: start;
   box-pack: start;
-  position: relative; }
-  .page-header .search {
+  position: relative;
+  border-bottom-width: 3px; }
+  .page-header .search-container {
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     box-flex: 1;
-    line-height: 3.75em;
-    padding: 0 1.25em; }
-  .page-header nav {
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    -webkit-box-align: start;
-    -moz-box-align: start;
-    box-align: start;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
-    -webkit-box-pack: start;
-    -moz-box-pack: start;
-    box-pack: start; }
-  .page-header .nav-step {
-    color: #555555;
-    display: block;
     height: 3.75em;
     line-height: 3.75em;
-    padding: 0 1.875em 0 1.25em;
     position: relative; }
-    .page-header .nav-step::after {
+    .page-header .search-container .icon {
       position: absolute;
-      top: 0.625em;
+      top: 0px;
+      left: 1.25em;
+      color: #555555; }
+    .page-header .search-container input[type="search"] {
+      position: absolute;
+      top: 0px;
       right: 0px;
-      width: 1px;
-      height: 2.5em;
-      -webkit-transform: rotate(30deg);
-      -moz-transform: rotate(30deg);
-      -ms-transform: rotate(30deg);
-      -o-transform: rotate(30deg);
-      transform: rotate(30deg);
-      background-color: #555555;
-      content: "";
-      display: block; }
-    .page-header .nav-step:last-child {
-      color: #f0f0f0; }
-      .page-header .nav-step:last-child::after {
-        content: none; }
-    .page-header .nav-step h3 {
-      display: inline-block; }
-    .page-header .nav-step .icon {
-      color: inherit; }
+      bottom: 0px;
+      left: 0px;
+      background-color: #333333;
+      border: 0;
+      border-bottom: 3px solid #555555;
+      color: #f0f0f0;
+      line-height: 3.75em;
+      outline: none;
+      padding: 0 1.25em 0 3.125em; }
+      .page-header .search-container input[type="search"]::-webkit-input-placeholder {
+        color: #555555; }
+      .page-header .search-container input[type="search"]:-moz-placeholder {
+        color: #555555; }
+      .page-header .search-container input[type="search"]::-moz-placeholder {
+        color: #555555; }
+      .page-header .search-container input[type="search"]:-ms-input-placeholder {
+        color: #555555; }
+      .page-header .search-container input[type="search"]:focus {
+        background-color: #555555;
+        color: #f0f0f0; }
+        .page-header .search-container input[type="search"]:focus::-webkit-input-placeholder {
+          color: #333333; }
+        .page-header .search-container input[type="search"]:focus:-moz-placeholder {
+          color: #333333; }
+        .page-header .search-container input[type="search"]:focus::-moz-placeholder {
+          color: #333333; }
+        .page-header .search-container input[type="search"]:focus:-ms-input-placeholder {
+          color: #333333; }
+      .page-header .search-container input[type="search"]:focus + .icon {
+        color: #333333; }
   .page-header .block:last-of-type, .page-header .view-controls:last-of-type {
     border-left: 1px solid #555555;
     border-right: 0; }
@@ -699,7 +697,7 @@ header {
     clear: both; }
 
 .test {
-  border: 1px solid #f0f0f0;
+  border: 3px solid #555555;
   border-radius: 5px;
   margin-bottom: 1.618em; }
   .test .failometer {
@@ -709,11 +707,11 @@ header {
   *zoom: 1;
   display: block;
   border: 0;
-  border-bottom: 1px solid #f0f0f0;
   color: white;
   height: 3.75em;
   line-height: 3.75em;
-  padding: 0 0 0 1.25em; }
+  padding: 0 0 0 1.25em;
+  background-color: #3b3b3b; }
   .test-header:before, .test-header:after {
     content: " ";
     display: table; }
@@ -750,8 +748,7 @@ header {
   *zoom: 1;
   max-width: 100%;
   margin-left: auto;
-  margin-right: auto;
-  border-top: 1px solid #f0f0f0; }
+  margin-right: auto; }
   .feature-details:before, .feature-details:after {
     content: " ";
     display: table; }
@@ -780,7 +777,7 @@ header {
     display: block;
     background-color: #3b3b3b;
     border-radius: 0 0 4px 4px;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid #555555;
     color: #555555;
     font-weight: bold;
     height: 2.5em;
@@ -798,7 +795,10 @@ header {
 .step {
   *zoom: 1;
   display: block;
-  border-top: 1px solid #555555; }
+  -webkit-transition: all 0.05s;
+  -moz-transition: all 0.05s;
+  transition: all 0.05s;
+  border-top: 3px solid #555555; }
   .step:before, .step:after {
     content: " ";
     display: table; }
@@ -806,6 +806,8 @@ header {
     clear: both; }
   .step:first-of-type {
     border: 0; }
+  .step:hover {
+    background-color: #1a1a1a; }
   .step .thumbnail {
     display: block;
     float: left;
@@ -1023,7 +1025,7 @@ header {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: #3b3b3b;
-    border: 1px solid #f0f0f0;
+    border: 1px solid;
     border-bottom: 0;
     border-right: 0;
     content: "";
