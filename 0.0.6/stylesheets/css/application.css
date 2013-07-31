@@ -848,12 +848,7 @@ header {
   -webkit-transition: all 0.15s ease-out 0;
   -moz-transition: all 0.15s ease-out 0;
   transition: all 0.15s ease-out 0;
-  position: absolute;
-  top: 3.75em;
-  right: 0px;
-  bottom: 0px;
   background-color: #333333;
-  right: -25%;
   width: 25%; }
   .pane-container .pane {
     display: none;
@@ -1010,8 +1005,20 @@ header {
   padding: 5px 10px;
   display: none; }
 
+.page-index .pane-container {
+  position: absolute;
+  top: 6.25em;
+  bottom: 0px;
+  border-right: 1px solid #555555;
+  left: -25%; }
+
 .page-test {
   overflow: hidden; }
+  .page-test .pane-container {
+    position: absolute;
+    top: 3.75em;
+    bottom: 0px;
+    right: -25%; }
 
 .failometer .is-selected {
   position: relative; }
@@ -1037,9 +1044,15 @@ header {
     top: auto;
     bottom: -6px; }
 
-body.pane-open .preview {
+body.page-index.pane-open .tests-list {
+  margin-left: 25%;
   width: 75%; }
-body.pane-open .pane-container {
+body.page-index.pane-open .pane-container {
+  left: 0; }
+
+body.page-test.pane-open .preview {
+  width: 75%; }
+body.page-test.pane-open .pane-container {
   right: 0; }
 
 body.rulers-open .ruler-top {

@@ -757,9 +757,7 @@ header {
 
 .pane-container {
   @include transition;
-  @include position(absolute, $large 0px 0px 0);
   background-color: $color-background;
-  right: -$pane-width;
   width: $pane-width;
 
   .pane {
@@ -944,11 +942,20 @@ header {
 //************************************************************************//
 
 .page-index {
-  
+  .pane-container {
+    @include position(absolute, $large+$medium 0 0px 0);
+    border-right: 1px solid $color-midground;
+    left: -$pane-width;
+  }
 }
 
 .page-test {
   overflow: hidden;
+
+  .pane-container {
+    @include position(absolute, $large 0 0px 0);
+    right: -$pane-width;
+  }
 }
 
 //************************************************************************//
@@ -966,7 +973,19 @@ header {
   }
 }
 
-body.pane-open {
+body.page-index.pane-open {
+  .tests-list {
+    margin-left: $pane-width;
+    width: 100% - $pane-width;
+  }
+
+  .pane-container {
+    left: 0;
+  }
+}
+
+
+body.page-test.pane-open {
   .preview {
     width: 100% - $pane-width;
   }
