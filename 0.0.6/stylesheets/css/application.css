@@ -798,6 +798,7 @@ header {
   -webkit-transition: all 0.05s;
   -moz-transition: all 0.05s;
   transition: all 0.05s;
+  background-color: #444;
   border-top: 3px solid #555555; }
   .step:before, .step:after {
     content: " ";

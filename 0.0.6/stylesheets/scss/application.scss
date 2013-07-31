@@ -704,6 +704,7 @@ header {
 .step {
   @include row();
   @include transition(all 0.05s);
+  background-color: #444;
   border-top: 3px solid $color-midground;
 
   &:first-of-type {
