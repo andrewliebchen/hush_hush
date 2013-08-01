@@ -548,45 +548,97 @@ header {
   position: relative;
   border-bottom-width: 3px;
 
-  .search-container {
+  .tab-container {
     @include box-flex(1);
-    height: $large;
-    line-height: $large;
     position: relative;
+    height: $large;
+    padding: 0 em(10);
 
     .icon {
-      @include position(absolute, 0px 0 0 em(20));
       color: $color-midground;
+      cursor: pointer;
+      float: right;
     }
 
-    input[type="search"] {
-      @include position(absolute, 0px 0px 0px 0px);
-      background-color: $color-background;
-      border: 0;
-      border-bottom: 3px solid $color-midground;
-      color: $color-foreground;
-      line-height: $large;
-      outline: none;
-      padding: 0 em(20) 0 em(50);
+    .icon:hover {
+      color: white;
+    }
 
-      @include placeholder {
-        color: $color-midground;
-      }
-
-      &:focus {
-        background-color: $color-midground;
-        color: $color-foreground;
-
-        @include placeholder {
-          color: $color-background;
-        }
-      }
-
-      &:focus + .icon {
-        color: $color-background;
-      }
+    .icon.tab-add {
+      font-size: 20px;
+      line-height: $medium;
     }
   }
+
+  .tab {
+    $height: em(50);
+    @include span-columns(3);
+    background-color: $color-background;
+    border-radius: 5px 5px 0 0;
+    border: 3px solid $color-midground;
+    cursor: pointer;
+    height: $height;
+    line-height: $height;
+    margin: em(10) em(10) 0 0;
+    padding: 0 em(10) 0 em(15);
+
+    &.is-selected {
+      border-bottom: 0;
+      color: white;
+      font-weight: bold;
+    }
+
+    .icon {
+      display: none;
+      font-size: 16px;
+      line-height: $medium;
+      padding: 0;
+    }
+
+    &:hover .icon {
+      display: inline-block;
+    }
+  }
+
+  // .search-container {
+  //   @include box-flex(1);
+  //   height: $large;
+  //   line-height: $large;
+  //   position: relative;
+
+  //   .icon {
+  //     @include position(absolute, 0px 0 0 em(20));
+  //     color: $color-midground;
+  //   }
+
+  //   input[type="search"] {
+  //     @include position(absolute, 0px 0px 0px 0px);
+  //     background-color: $color-background;
+  //     border: 0;
+  //     border-bottom: 3px solid $color-midground;
+  //     color: $color-foreground;
+  //     line-height: $large;
+  //     outline: none;
+  //     padding: 0 em(20) 0 em(50);
+
+  //     @include placeholder {
+  //       color: $color-midground;
+  //     }
+
+  //     &:focus {
+  //       background-color: $color-midground;
+  //       color: $color-foreground;
+
+  //       @include placeholder {
+  //         color: $color-background;
+  //       }
+  //     }
+
+  //     &:focus + .icon {
+  //       color: $color-background;
+  //     }
+  //   }
+  // }
 
   .block:last-of-type {
     border-left: 1px solid $color-midground;
